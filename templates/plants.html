@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for plant in plants %}
+        {{ plant.name }}<br>
+        {{ plant.botanical_name }}<br>
+        {{ plant.description }}<br>
+        {{ plant.watering }}<br>
+        {{ plant.size }}<br>
+        {{ plant.light_needed }}<br>
+        {{ plant.room }}<br>
+        {{ plant.img_url }}<br>
+    {% endfor %}
+
+{% endblock %}
