@@ -16,10 +16,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route("/")
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
 @app.route("/get_plants")
 def get_plants():
     plants = mongo.db.plants.find()
     return render_template("plants.html", plants=plants)
+
 
 
 if __name__ == "__main__":
