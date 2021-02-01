@@ -77,7 +77,9 @@ section {
 }
 
 .header {
-    padding: 20px 0 20px 0;
+    padding: 20px 0 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(131, 193, 123, 0.5);
 }
 
 .btn {

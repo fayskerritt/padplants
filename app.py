@@ -22,8 +22,8 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/get_plants")
-def get_plants():
+@app.route("/all_plants")
+def all_plants():
     plants = list(mongo.db.plants.find())
     return render_template("plants.html", plants=plants)
 
@@ -111,6 +111,11 @@ def logout():
     flash("You are now logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.route("/add_plant")
+def add_plant():
+    return render_template("add_plant.html")
 
 
 if __name__ == "__main__":
