@@ -22,12 +22,13 @@ button a {
 }
 
 a:hover, a:focus {
-    color: #339a229c;
+    color: #83c17b;
     text-decoration: none;
 }
 
 #navbar {
-    background-color: #339a229c;
+    background-color: #83c17b;
+    margin-bottom: 30px;
 }
 
 .nav {
@@ -58,7 +59,11 @@ a:hover, a:focus {
 }
 
 .container {
-    padding-top: 50px;
+    padding-top: 20px;
+}
+
+section {
+    padding-top: 80px;
 }
 
 .row {
@@ -87,7 +92,7 @@ a:hover, a:focus {
 }
 
 footer {
-    background-color: #339a229c;
+    background-color: #83c17b;
     margin-top: 50px;
 }
 #footer-brand {
