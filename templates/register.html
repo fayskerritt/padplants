@@ -4,11 +4,11 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <h1 class="header text-center">Register</h1>
-            <form class="needs-validation" method="POST" action="{{ url_for('register') }}">
+            <form method="POST" action="{{ url_for('register') }}">
                 <!-- username -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" class="form-control validate" name="username" aria-describedby="usernameHelp" required>
+                    <input id="username" name="username" type="text" class="form-control" minlength="5" maxlength="15" pattern="^[A-Za-z0-9!@#$%^&*_=+-]{5,15}$" aria-describedby="usernameHelp" required>
                     <div id="usernameHelp" class="form-text">Must be 5-15 characters long.</div>
                 </div>
                 <!-- password -->
@@ -16,11 +16,11 @@
                     <label for="password" class="col-form-label">Password</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="password" class="form-control" name="password" aria-describedby="passwordHelpInline" required>
+                    <input id="password" name="password" type="password" class="form-control" minlength="5" maxlength="15" aria-describedby="passwordHelpInline" required>
                 </div>
                 <div class="col-auto">
                     <span id="passwordHelpInline" class="form-text">
-                    Must be 5-15 characters long.
+                        Must be 5-15 characters long.
                     </span>
                 </div>
                 <!-- confirm password-->

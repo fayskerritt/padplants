@@ -76,13 +76,14 @@ a:hover, a:focus {
 }
 
 .banner {
-    background-color: #339a229c;
+    background-color: #66b75a9c;
     border-radius: 2px;
     padding: 15px 15px 8px 15px;
 }
 
 footer {
     background-color: #339a229c;
+    margin-top: 50px;
 }
 #footer-brand {
     font-size: 35px;

@@ -30,6 +30,36 @@ def get_plants():
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
+
+    if request.method == "POST":
+        # check to see if username exists already in mongo db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("This username already exists")
+            return redirect(url_for("register"))
+
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm-password")
+
+        if password != confirm_password:
+            flash("Passwords did not match! Please try again.")
+            return redirect(url_for("register"))
+
+        if password == confirm_password:
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password"), method="pbkdf2:sha256:8000")
+            }
+
+        mongo.db.users.insert_one(register)
+
+        # enter new user into cookie 'session'
+        session["user"] = request.form.get("username").lower()
+        flash("Congratulations, you are now registered!")
+
     return render_template("register.html")
 
 

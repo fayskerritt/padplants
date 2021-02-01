@@ -47,6 +47,19 @@
         </div>
     </nav>
 
+    <section>
+        <!-- Flash messages displayed here-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flash-messages">
+                        <h4 class="banner text-center">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
     <main class="container">
 
         {% block content %}
