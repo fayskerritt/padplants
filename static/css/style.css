@@ -12,13 +12,18 @@ button a {
     color: #fff;
 }
 
-a:hover, a:focus {
+.btn a:hover, .btn a:focus {
     color: #95e3899c;
     text-decoration: none;
 }
 
 #button:hover, #button:focus {
     color: #95e3899c;
+}
+
+a:hover, a:focus {
+    color: #339a229c;
+    text-decoration: none;
 }
 
 #navbar {

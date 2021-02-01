@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="header text-center">Login</h1>
+            <form method="POST" action="{{ url_for('login') }}">
+                <!-- username -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input id="username" name="username" type="text" class="form-control" minlength="5" maxlength="15" pattern="^[A-Za-z0-9!@#$%^&*_=+-]{5,15}$" required>
+                </div>
+                <!-- password -->
+                <div class="col-auto">
+                    <label for="password" class="col-form-label">Password</label>
+                </div>
+                <div class="col-auto">
+                    <input id="password" name="password" type="password" class="form-control" minlength="5" maxlength="15" required>
+                </div>
+                <button type="submit" id="button" class="btn btn-dark">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <p class="text-center banner">Or <a href="{{ url_for('register') }}">create an account here</a></p>
+        </div>
+    </div>
+
+{% endblock %}
