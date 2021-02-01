@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <img class="image" src="{{ url_for('static', filename='img/img3.jpg') }}" alt="Photo of plants">
+        </div>
+        <div class="col-7">
+            <h1 class="header text-center">{{ username.capitalize() }}'s Profile</h1>
+        </div>
+    </div>
+
+{% endblock %}
