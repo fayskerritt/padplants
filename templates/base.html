@@ -37,7 +37,7 @@
                         <a class="nav-link" href="#">LOGIN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">REGISTER</a>
+                        <a class="nav-link" href="{{ url_for('register') }}">REGISTER</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">LOGOUT</a>
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p>Plants make your pad a nicer place to live and we want to help you to find the right plants for you. </p>
-                <a id="navbar-brand" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Pad Plants Logo" class="logo"></a>
+                <a id="footer-brand" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Pad Plants Logo" class="logo"></a>
                 <p>© Pad Plants 2021.</p>
             </div>
         </div>

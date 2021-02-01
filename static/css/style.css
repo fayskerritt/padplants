@@ -8,6 +8,18 @@ a {
     text-decoration: none;
     color: #000;
 }
+button a {
+    color: #fff;
+}
+
+a:hover, a:focus {
+    color: #95e3899c;
+    text-decoration: none;
+}
+
+#button:hover, #button:focus {
+    color: #95e3899c;
+}
 
 #navbar {
     background-color: #339a229c;
@@ -71,4 +83,13 @@ a {
 
 footer {
     background-color: #339a229c;
+}
+#footer-brand {
+    font-size: 35px;
+    color: #000;
+    padding-left: 20px;
+}
+
+form {
+    padding: 20px;
 }
