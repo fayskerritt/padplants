@@ -24,7 +24,7 @@ def home():
 
 @app.route("/get_plants")
 def get_plants():
-    plants = mongo.db.plants.find()
+    plants = list(mongo.db.plants.find())
     return render_template("plants.html", plants=plants)
 
 
