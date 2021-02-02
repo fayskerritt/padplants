@@ -16,30 +16,34 @@
                     </div>
                     <div class="card-footer">
                         <ul class="features">
-                            <li>
-                                Best in the {{ plant.room }} 
-                                {% if plant.room == 'Bathroom' %}
-                                    <i class="fas fa-bath icon"></i>
-                                {% elif plant.room == 'Bedroom' %}
-                                    <i class="fas fa-bed icon"></i>
-                                {% elif plant.room == 'Living Room' %}
-                                    <i class="fas fa-couch icon"></i>
-                                {% elif plant.room == 'Study' %}
-                                    <i class="fas fa-desktop icon"></i>
-                                {% else %}
-                                    <i class="fas fa-utensils icon"></i>
-                                {% endif %}
-                            </li>
-                            <li>
-                                Likes {{ plant.light_needed }}
-                                {% if plant.light_needed == 'Shade' %}
-                                    <i class="fas fa-cloud icon"></i>
-                                {% elif plant.light_needed == 'Direct Sunlight' %}
-                                    <i class="fas fa-cloud-sun icon"></i>
-                                {% else %}
-                                    <i class="fas fa-sun icon"></i>
-                                {% endif %}
-                            </li>
+                            {% if plant.room %}
+                                <li>
+                                    Best in the {{ plant.room }} 
+                                    {% if plant.room == 'Bathroom' %}
+                                        <i class="fas fa-bath fa-lg icon"></i>
+                                    {% elif plant.room == 'Bedroom' %}
+                                        <i class="fas fa-bed fa-lg icon"></i>
+                                    {% elif plant.room == 'Living Room' %}
+                                        <i class="fas fa-couch fa-lg icon"></i>
+                                    {% elif plant.room == 'Study' %}
+                                        <i class="fas fa-desktop fa-lg icon"></i>
+                                    {% else %}
+                                        <i class="fas fa-utensils fa-lg icon"></i>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                            {% if plant.light_needed %}
+                                <li>
+                                    Likes {{ plant.light_needed }}
+                                    {% if plant.light_needed == 'Shade' %}
+                                        <i class="fas fa-cloud fa-lg icon"></i>
+                                    {% elif plant.light_needed == 'Direct Sunlight' %}
+                                        <i class="fas fa-cloud-sun fa-lg icon"></i>
+                                    {% else %}
+                                        <i class="fas fa-sun fa-lg icon"></i>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
                         </ul>
                         
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
