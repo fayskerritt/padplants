@@ -70,6 +70,7 @@ form {
 
 .delete {
     background-color: #b94b32;
+    color: #fff;
 }
 
 .banner {
@@ -136,6 +137,13 @@ footer {
     padding-left: 10px;
     padding-top: 20px;
     text-align: center;
+}
+
+.card-feature {
+    border: 1px solid #66b75a9c;
+    border-radius: 15px;
+    padding: 7px 10px 7px 10px;
+    margin: 0 7px 7px 0;
 }
 
 .features li {

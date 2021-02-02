@@ -2,21 +2,21 @@
 {% block content %}
 
     <h1 class="header text-center">All Plants</h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for plant in plants %}
             <div class="col">
                 <div class="card h-100 shadow">
                     <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/plantdefault.jpg';">
                     <div class="card-body">
                         <h4 class="card-title">{{ plant.name }}</h4>
-                        <p class="card-text">{{ plant.botanical_name }}<br></p>
-                        <h6>{{ plant.size }} sized plant</h6>
+                        <p class="card-text">{{ plant.botanical_name.upper() }}<br></p>
+                        <h6 class="card-feature">Plant size - {{ plant.size }}</h6>
                         <p>{{ plant.description }}</p>
-                        <h6>This plant likes to be watered every {{ plant.watering }}</h6>
+                        <h6 class="card-feature">Likes to be watered every {{ plant.watering }}</h6>
                         <ul class="features">
                             {% if plant.room %}
                                 <li>
-                                    Best in the {{ plant.room }} 
+                                    {{ plant.room }} 
                                     {% if plant.room == 'Bathroom' %}
                                         <i class="fas fa-bath fa-lg icon"></i>
                                     {% elif plant.room == 'Bedroom' %}
@@ -32,7 +32,7 @@
                             {% endif %}
                             {% if plant.light_needed %}
                                 <li>
-                                    Likes {{ plant.light_needed }}
+                                    {{ plant.light_needed }}
                                     {% if plant.light_needed == 'Shade' %}
                                         <i class="fas fa-cloud fa-lg icon"></i>
                                     {% elif plant.light_needed == 'Direct Sunlight' %}
@@ -46,8 +46,8 @@
                     </div>
                     <div class="card-footer">
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
-                        <button class="btn btn-sm edit" type="button"><a href="#">Edit</a></button>
-                        <button class="btn btn-sm delete" type="button"><a href="#">Delete</a></button>
+                        <button class="btn btn-sm edit" type="button"><a href="{{ url_for('edit', plant_id=plant._id) }}">Edit</a></button>
+                        <button class="btn btn-sm delete" type="button"><a href="{{ url_for('delete', plant_id=plant._id) }}">Delete</a></button>
                     </div>
                 </div>
 

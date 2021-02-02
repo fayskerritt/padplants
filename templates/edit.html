@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h1 class="header text-center">Add Plant</h1>
+    <h1 class="header text-center">Edit Plant</h1>
 
-    <form method="POST" action="{{ url_for('add_plant') }}">
+    <form method="POST" action="{{ url_for('edit', plant_id=plant._id) }}">
         <!-- plant name -->
         <div class="mb-3">
             <label for="name" class="form-label">Plant Name</label>
@@ -85,7 +85,7 @@
             <input type="text" class="form-control" id="img_url" name="img_url" placeholder="https://..." pattern="http.+" title="Must include the 'http://' at the start" required>
         </div>
         <!-- submit button -->
-        <button type="submit" id="button" class="btn btn-dark">Add Plant</button>
+        <button type="submit" id="button" class="btn btn-dark">Save</button>
     </form>
 
 

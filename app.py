@@ -134,6 +134,19 @@ def add_plant():
     return render_template("add_plant.html")
 
 
+@app.route("/edit<plant_id>", methods=["GET", "POST"])
+def edit(plant_id):
+    plant = mongo.db.plants.find_one({"_id": ObjectId(plant_id)})
+    return render_template("edit.html", plant=plant)
+
+
+@app.route("/delete<plant_id>")
+def delete(plant_id):
+    mongo.db.plants.remove({"_id": ObjectId(plant_id)})
+    flash("Plant Deleted")
+    return redirect(url_for("all_plants"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
