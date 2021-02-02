@@ -46,8 +46,13 @@
                     </div>
                     <div class="card-footer">
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
-                        <button class="btn btn-sm edit" type="button"><a href="{{ url_for('edit', plant_id=plant._id) }}">Edit</a></button>
-                        <button class="btn btn-sm delete" type="button"><a href="{{ url_for('delete', plant_id=plant._id) }}">Delete</a></button>
+                        {% if session.user|lower == plant.created_by|lower %}
+                            <button class="btn btn-sm edit" type="button"><a href="{{ url_for('edit', plant_id=plant._id) }}">Edit</a></button>
+                            <button class="btn btn-sm delete" type="button"><a href="{{ url_for('delete', plant_id=plant._id) }}">Delete</a></button>
+                        {% elif session.user|lower == 'admin' %}
+                            <button class="btn btn-sm edit" type="button"><a href="{{ url_for('edit', plant_id=plant._id) }}">Edit</a></button>
+                            <button class="btn btn-sm delete" type="button"><a href="{{ url_for('delete', plant_id=plant._id) }}">Delete</a></button>
+                        {% endif %}
                     </div>
                 </div>
 

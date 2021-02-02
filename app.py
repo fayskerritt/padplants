@@ -136,6 +136,21 @@ def add_plant():
 
 @app.route("/edit<plant_id>", methods=["GET", "POST"])
 def edit(plant_id):
+    if request.method == "POST":
+        submit = {
+            "name": request.form.get("name"),
+            "botanical_name": request.form.get("botanical_name"),
+            "description": request.form.get("description"),
+            "watering": request.form.get("watering"),
+            "size": request.form.get("size"),
+            "light_needed": request.form.get("light_needed"),
+            "room": request.form.get("room"),
+            "img_url": request.form.get("img_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.plants.update({"_id": ObjectId(plant_id)}, submit)
+        flash("Plant Edited")
+
     plant = mongo.db.plants.find_one({"_id": ObjectId(plant_id)})
     return render_template("edit.html", plant=plant)
 
