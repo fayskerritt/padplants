@@ -4,79 +4,88 @@
     <h1 class="header text-center">Add Plant</h1>
 
     <form method="POST" action="{{ url_for('add_plant') }}">
+        <!-- plant name -->
         <div class="mb-3">
-            <label for="plant-name" class="form-label">Plant Name</label>
-            <input type="text" class="form-control" id="plant-name" placeholder="Commonly known name">
+            <label for="name" class="form-label">Plant Name</label>
+            <input type="text" class="form-control" id="name" name="name" minlength="3" maxlength="20" placeholder="Commonly known name" required>
         </div>
+        <!-- botanical name -->
         <div class="mb-3">
-            <label for="botanical-name" class="form-label">Botanical Name</label>
-            <input type="text" class="form-control" id="botanical-name" placeholder="Botanical name">
+            <label for="botanical_name" class="form-label">Botanical Name</label>
+            <input type="text" class="form-control" id="botanical_name" name="botanical_name" minlength="3" maxlength="20" placeholder="Botanical name">
         </div>
+        <!-- description -->
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" rows="4" placeholder="Describe the plant including any distinctive traits or the plant's origin"></textarea>
+            <textarea class="form-control" id="description" rows="4" name="description" minlength="5" maxlength="200" placeholder="Describe the plant including any distinctive traits or the plant's origin" required></textarea>
         </div>
+        <!-- watering schedule -->
         <div class="mb-3">
-            <label for="watering-schedule" class="form-label">Watering schedule</label>
-            <select class="form-select" id="watering-schedule" aria-label="Select watering schedule">
+            <label for="watering" class="form-label">Watering schedule</label>
+            <select class="form-select" id="watering" name="watering" aria-label="Select watering schedule" required>
                 <option value=""></option>
-                <option value="7">Every 7 days</option>
-                <option value="7-10">7 - 10 days</option>
-                <option value="10-14">10 - 14 days</option>
+                <option value="every 7 days">Every 7 days</option>
+                <option value="7 - 10 days">7 - 10 days</option>
+                <option value="10 - 14 days">10 - 14 days</option>
             </select>
         </div>
+        <!-- plant size -->
         <div class="mb-3">
-            <label for="plant-size" class="form-label">Size of plant</label>
-            <select class="form-select" id="plant-size" aria-label="Select plant size">
+            <label for="size" class="form-label">Size of plant</label>
+            <select class="form-select" id="size" name="size" aria-label="Select plant size" required>
                 <option value=""></option>
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
             </select>
         </div>
+        <!-- light needed -->
         <div class="mb-3">
             <label for="light-needed" class="form-label">Amount of light needed: </label><br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="light" id="shade" value="shade">
+                <input class="form-check-input" type="radio" name="light_needed" id="shade" value="Shade">
                 <label class="form-check-label" for="shade"><i class="fas fa-cloud"></i> Shade</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="light" id="light+shade" value="light+shade">
+                <input class="form-check-input" type="radio" name="light_needed" id="light+shade" value="Light and Shade">
                 <label class="form-check-label" for="light+shade"><i class="fas fa-cloud-sun"></i> Light & Shade</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="light" id="sunlight" value="sunlight">
+                <input class="form-check-input" type="radio" name="light_needed" id="sunlight" value="Direct Sunlight">
                 <label class="form-check-label" for="sunlight"><i class="fas fa-sun"></i> Direct Sunlight</label>
             </div>
         </div>
+        <!-- room -->
         <div class="mb-3">
             <label for="light-needed" class="form-label">Best room: </label><br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="room" id="bathroom" value="bathroom">
+                <input class="form-check-input" type="radio" name="room" id="bathroom" value="Bathroom">
                 <label class="form-check-label" for="bathroom"><i class="fas fa-bath"></i> Bathroom</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="room" id="bedroom" value="bedroom">
+                <input class="form-check-input" type="radio" name="room" id="bedroom" value="Bedroom">
                 <label class="form-check-label" for="bedroom"><i class="fas fa-bed"></i> Bedroom</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="room" id="living-room" value="living-room">
+                <input class="form-check-input" type="radio" name="room" id="living-room" value="Living Room">
                 <label class="form-check-label" for="living-room"><i class="fas fa-couch"></i> Living Room</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="room" id="study" value="study">
+                <input class="form-check-input" type="radio" name="room" id="study" value="Study">
                 <label class="form-check-label" for="study"><i class="fas fa-desktop"></i> Study</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="room" id="kitchen" value="kitchen">
+                <input class="form-check-input" type="radio" name="room" id="kitchen" value="Kitchen">
                 <label class="form-check-label" for="kitchen"><i class="fas fa-utensils"></i> Kitchen</label>
             </div>
         </div>
+        <!-- plant image url -->
         <div class="mb-3">
-            <label for="img-url" class="form-label">Image URL</label>
-            <input type="text" class="form-control" id="img-url" placeholder="https://..." pattern="http?://.+" title="Must include the 'http://' at the start">
+            <label for="img_url" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="img_url" name="img_url" placeholder="https://..." pattern="http.+" title="Must include the 'http://' at the start" required>
         </div>
-        <button type="submit"id="button" class="btn btn-dark">Add Plant</button>
+        <!-- submit button -->
+        <button type="submit" id="button" class="btn btn-dark">Add Plant</button>
     </form>
 
 

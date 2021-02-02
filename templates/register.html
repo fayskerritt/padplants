@@ -7,13 +7,13 @@
             <form method="POST" action="{{ url_for('register') }}">
                 <!-- username -->
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
+                    <label for="username" class="form-label"><i class="fa fa-user fa-lg"></i> Username</label>
                     <input id="username" name="username" type="text" class="form-control" minlength="5" maxlength="15" pattern="^[A-Za-z0-9!@#$%^&*_=+-]{5,15}$" aria-describedby="usernameHelp" required>
                     <div id="usernameHelp" class="form-text">Must be 5-15 characters long.</div>
                 </div>
                 <!-- password -->
                 <div class="col-auto">
-                    <label for="password" class="col-form-label">Password</label>
+                    <label for="password" class="col-form-label"><i class="fa fa-key fa-lg"></i> Password</label>
                 </div>
                 <div class="col-auto">
                     <input id="password" name="password" type="password" class="form-control" minlength="5" maxlength="15" aria-describedby="passwordHelpInline" required>
@@ -25,7 +25,7 @@
                 </div>
                 <!-- confirm password-->
                 <div class="col-auto">
-                    <label for="confirm-password" class="col-form-label">Confirm Password</label>
+                    <label for="confirm-password" class="col-form-label"><i class="fa fa-key fa-lg"></i> Confirm Password</label>
                 </div>
                 <div class="col-auto">
                     <input type="password" id="confirm-password" class="form-control" name="confirm-password" required>
@@ -36,7 +36,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <p class="text-center banner">Or <a href="{{ url_for('login') }}">login to your account here</a></p>
+            <p class="text-center banner">Or <a href="{{ url_for('login') }}">login to your account here <i class="fa fa-sign-in-alt fa-lg"></i></a></p>
         </div>
     </div>
 

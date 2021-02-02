@@ -113,8 +113,24 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_plant")
+@app.route("/add_plant", methods=["GET", "POST"])
 def add_plant():
+    if request.method == "POST":
+        plant = {
+            "name": request.form.get("name"),
+            "botanical_name": request.form.get("botanical_name"),
+            "description": request.form.get("description"),
+            "watering": request.form.get("watering"),
+            "size": request.form.get("size"),
+            "light_needed": request.form.get("light_needed"),
+            "room": request.form.get("room"),
+            "img_url": request.form.get("img_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.plants.insert_one(plant)
+        flash("Plant Added")
+        return redirect(url_for("all_plants"))
+
     return render_template("add_plant.html")
 
 

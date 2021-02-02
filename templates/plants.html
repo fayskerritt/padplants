@@ -1,67 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <!-- {% for plant in plants %}
-        {{ plant.name }}<br>
-        {{ plant.botanical_name }}<br>
-        {{ plant.description }}<br>
-        {{ plant.watering }}<br>
-        {{ plant.size }}<br>
-        {{ plant.light_needed }}<br>
-        {{ plant.room }}<br>
-        {{ plant.img_url }}<br>
-    {% endfor %} -->
-
     <h1 class="header text-center">All Plants</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for plant in plants %}
             <div class="col">
                 <div class="card h-100 shadow">
-                    <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo">
+                    <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/plantdefault.jpg';">
                     <div class="card-body">
                         <h4 class="card-title">{{ plant.name }}</h4>
                         <p class="card-text">{{ plant.botanical_name }}<br></p>
                         <h6>{{ plant.size }} sized plant</h6>
+                        <p>{{ plant.description }}</p>
+                        <h6>This plant likes to be watered every {{ plant.watering }}</h6>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Best in the {{ plant.room }} and likes {{ plant.light_needed }}</small>
+                        <ul class="features">
+                            <li>
+                                Best in the {{ plant.room }} 
+                                {% if plant.room == 'Bathroom' %}
+                                    <i class="fas fa-bath icon"></i>
+                                {% elif plant.room == 'Bedroom' %}
+                                    <i class="fas fa-bed icon"></i>
+                                {% elif plant.room == 'Living Room' %}
+                                    <i class="fas fa-couch icon"></i>
+                                {% elif plant.room == 'Study' %}
+                                    <i class="fas fa-desktop icon"></i>
+                                {% else %}
+                                    <i class="fas fa-utensils icon"></i>
+                                {% endif %}
+                            </li>
+                            <li>
+                                Likes {{ plant.light_needed }}
+                                {% if plant.light_needed == 'Shade' %}
+                                    <i class="fas fa-cloud icon"></i>
+                                {% elif plant.light_needed == 'Direct Sunlight' %}
+                                    <i class="fas fa-cloud-sun icon"></i>
+                                {% else %}
+                                    <i class="fas fa-sun icon"></i>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        
+                        <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
                     </div>
-                </div>
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    More Info
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">More Info</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    
-                    <div class="card h-100">
-                        <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ plant.name }}</h4>
-                            <p class="card-text">{{ plant.botanical_name }}<br></p>
-                            <h6>{{ plant.size }} sized plant</h6>
-                            <strong>Description:</strong>
-                            <p>{{ plant.description }}</p>
-                            <h6>This plant likes to be watered every {{ plant.watering }}</h6>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Best in the {{ plant.room }} and likes {{ plant.light_needed }}</small>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
             </div>
