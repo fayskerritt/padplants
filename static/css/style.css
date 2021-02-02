@@ -60,8 +60,16 @@ form {
 }
 
 .btn {
-    padding: 10px;
+    padding: 5px 10px;
     margin: 10px 0 10px 0;
+}
+
+.edit {
+    background-color: #3f7a90;
+}
+
+.delete {
+    background-color: #b94b32;
 }
 
 .banner {
@@ -126,6 +134,7 @@ footer {
 
 .features {
     padding-left: 10px;
+    padding-top: 20px;
     text-align: center;
 }
 

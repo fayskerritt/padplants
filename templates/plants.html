@@ -13,8 +13,6 @@
                         <h6>{{ plant.size }} sized plant</h6>
                         <p>{{ plant.description }}</p>
                         <h6>This plant likes to be watered every {{ plant.watering }}</h6>
-                    </div>
-                    <div class="card-footer">
                         <ul class="features">
                             {% if plant.room %}
                                 <li>
@@ -45,8 +43,11 @@
                                 </li>
                             {% endif %}
                         </ul>
-                        
+                    </div>
+                    <div class="card-footer">
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
+                        <button class="btn btn-sm edit" type="button"><a href="#">Edit</a></button>
+                        <button class="btn btn-sm delete" type="button"><a href="#">Delete</a></button>
                     </div>
                 </div>
 
