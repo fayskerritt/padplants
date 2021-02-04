@@ -35,6 +35,10 @@ button a {
     text-decoration: none;
 }
 
+#btn:hover, #btn:focus {
+    color: #95e3899c;
+}
+
 #button:hover, #button:focus {
     color: #95e3899c;
 }
@@ -153,4 +157,17 @@ footer {
     padding: 7px 10px 7px 10px;
     margin: 0 7px 7px 0;
     display: inline-block;
+}
+
+.plant-search {
+    width: 70%;
+}
+
+/* media queries */
+
+.profile {
+    min-height: 67vh;
+}
+.no-plants {
+    padding-bottom: 0px;
 }

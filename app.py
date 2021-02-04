@@ -28,6 +28,39 @@ def all_plants():
     return render_template("plants.html", plants=plants)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    criteria = []
+    if request.method == "POST":
+
+        search = request.form.get("search")
+        room = request.form.get("select-room")
+        size = request.form.get("select-size")
+        light = request.form.get("light")
+        water = request.form.get("water")
+
+        if search and not room and not size and not light and not water:
+            criteria = mongo.db.plants.find({"$text": {'$search': search}})
+        elif search and not room and not size and not light and water:
+            criteria = mongo.db.plants.find(
+                {"$and": [{"watering": "10 - 14 days"},
+                 {"$text": {'$search': search}}]}
+                 )
+        elif search and room and size and light and water:
+            criteria = mongo.db.plants.find(
+                {"$and": [{"watering": "10 - 14 days"},
+                 {"light_needed": "Shade"},
+                 {"size": size},
+                 {"room": room},
+                 {"$text": {'$search': search}}]}
+            )
+
+    plants = list(criteria)
+
+    return render_template(
+        "plants.html", plants=plants)
+
+
 @app.route("/register", methods=("GET", "POST"))
 def register():
 

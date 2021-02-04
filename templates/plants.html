@@ -2,6 +2,41 @@
 {% block content %}
 
     <h1 class="header text-center">All Plants</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <form action="{{ url_for('search') }}" method="post" class="form-inline">
+                <div class="text-center">
+                    <select name="select-room" id="select-room" class="form-select-inline my-2 p-2">
+                        <option value="">All Rooms</option>
+                        <option value="Bathroom">Bathroom</option>
+                        <option value="Bedroom">Bedroom</option>
+                        <option value="Living Room">Living Room</option>
+                        <option value="Study">Study</option>
+                        <option value="Kitchen">Kitchen</option>
+                    </select>
+                    <select name="select-size" id="select-size" class="form-select-inline my-2 p-2">
+                        <option value="">All Sizes</option>
+                        <option value="Small">Small</option>
+                        <option value="Mediium">Medium</option>
+                        <option value="Large">Large</option>
+                    </select>
+                    <div class="form-check form-check-inline m-2">
+                        <input class="form-check-input" type="checkbox" name="light" id="light" value="Shade">
+                        <label class="form-check-label" for="light"><i class="fas fa-cloud"></i> Low Light</label>
+                    </div>
+                    <div class="form-check form-check-inline m-2">
+                        <input class="form-check-input" type="checkbox" name="water" id="water" value="7 - 14 days">
+                        <label class="form-check-label" for="water"><i class="fas fa-tint-slash"></i> Less Watering</label>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <input class="form-control-inline plant-search" type="text" id="search" name="search" minlength="3" placeholder="Search Plants" aria-label="plant-search">
+                    <button type="submit" id="button" class="btn btn-dark">Search</button>
+                    <button class="btn btn-dark" type="button"><a href="{{ url_for('all_plants') }}">Reset</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for plant in plants %}
             <div class="col">
@@ -25,7 +60,7 @@
                                         <i class="fas fa-couch fa-lg icon"></i>
                                     {% elif plant.room == 'Study' %}
                                         <i class="fas fa-desktop fa-lg icon"></i>
-                                    {% else %}
+                                    {% elif plant.room == 'Kitchen' %}
                                         <i class="fas fa-utensils fa-lg icon"></i>
                                     {% endif %}
                                 </li>
@@ -48,7 +83,7 @@
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
                         {% if session.user|lower == plant.created_by|lower or session.user|lower == 'admin' %}
                             <button class="btn btn-sm edit" type="button"><a href="{{ url_for('edit', plant_id=plant._id) }}">Edit</a></button>
-                            <button class="btn btn-sm delete" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
+                            <button class="btn btn-sm delete" id="button" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
                         {% endif %}
 
                         <!-- Modal -->
@@ -63,7 +98,7 @@
                                     Are you sure you want to delete this plant?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" id="btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                     <button type="button" class="btn delete"><a href="{{ url_for('delete', plant_id=plant._id) }}">Delete</a></button>
                                 </div>
                                 </div>
