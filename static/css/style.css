@@ -131,6 +131,10 @@ footer {
     padding-left: 20px;
 }
 
+footer a {
+    color: #fff;
+}
+
 /* all plants */
 
 .icon {
@@ -163,11 +167,18 @@ footer {
     width: 70%;
 }
 
-/* media queries */
+/* profile */
 
 .profile {
     min-height: 67vh;
 }
 .no-plants {
     padding-bottom: 0px;
+}
+
+/* error page */
+
+.error-img {
+    max-width: 300px;
+    padding-top: 30px;
 }

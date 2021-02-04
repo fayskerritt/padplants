@@ -25,7 +25,7 @@
                         <a class="nav-link" href="{{ url_for('home') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('all_plants') }}">PLANTS</a>
+                        <a class="nav-link" href="{{ url_for('plants') }}">PLANTS</a>
                     </li>
                     {% if session.user %}
                         <li class="nav-item">
@@ -80,7 +80,7 @@
                 <p>© Pad Plants 2021.</p>
             </div>
             <div class="col-lg-2 text-center">
-                <p><i class="fab fa-instagram fa-lg"></i> <i class="fab fa-facebook fa-lg"></i> <i class="fab fa-github fa-lg"></i></p>
+                <p><a href="https://www.facebook.com/"><i class="fab fa-facebook fa-lg"></i></a> <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg"></i></a> <a href="https://github.com/"><i class="fab fa-github fa-lg"></a></i></p>
             </div>
         </div>
     </footer>

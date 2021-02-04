@@ -27,19 +27,19 @@
             <select class="form-select" id="watering" name="watering" aria-label="Select watering schedule" required>
                 {% if plant.watering == '7 days' %}
                     <option value=""></option>
-                    <option value="7 days" selected>Every 7 days</option>
-                    <option value="7 - 10 days">7 - 10 days</option>
-                    <option value="10 - 14 days">10 - 14 days</option>
+                    <option value="7" selected>Every 7 days</option>
+                    <option value="7-10">7 - 10 days</option>
+                    <option value="10-14">10 - 14 days</option>
                 {% elif plant.watering == '7 - 10 days' %}
                     <option value=""></option>
-                    <option value="7 days">Every 7 days</option>
-                    <option value="7 - 10 days" selected>7 - 10 days</option>
-                    <option value="10 - 14 days">10 - 14 days</option>
+                    <option value="7">Every 7 days</option>
+                    <option value="7-10" selected>7 - 10 days</option>
+                    <option value="10-14">10 - 14 days</option>
                 {% else %}
                     <option value=""></option>
-                    <option value="7 days">Every 7 days</option>
-                    <option value="7 - 10 days">7 - 10 days</option>
-                    <option value="10 - 14 days" selected>10 - 14 days</option>
+                    <option value="7">Every 7 days</option>
+                    <option value="7-10">7 - 10 days</option>
+                    <option value="10-14" selected>10 - 14 days</option>
                 {% endif %}
             </select>
         </div>
@@ -232,7 +232,7 @@
         </div>
         <!-- submit button -->
         <div class="mb-3 text-center">
-            <button class="btn btn-dark" type="button"><a href="{{ url_for('all_plants') }}">Cancel</a></button>
+            <button class="btn btn-dark" type="button"><a href="{{ url_for('plants') }}">Cancel</a></button>
             <button type="submit" id="button" class="btn btn-dark">Save</button>
         </div>
     </form>

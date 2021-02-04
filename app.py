@@ -22,43 +22,35 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/all_plants")
-def all_plants():
-    plants = list(mongo.db.plants.find())
-    return render_template("plants.html", plants=plants)
+@app.route("/plants")
+def plants():
+    plants = []
+    query_params = []
+    search = request.args.get("search")
+    room = request.args.get("room")
+    size = request.args.get("size")
+    light = request.args.get("light")
+    water = request.args.get("water")
 
+    if search:
+        query_params.append({"$text": {'$search': search}})
+    elif room:
+        query_params.append({"room": room})
+    elif size:
+        query_params.append({"size": size})
+    elif light:
+        query_params.append({"light_needed": "Shade"})
+    elif water:
+        query_params.append({"watering": "10 - 14 days"})
 
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    criteria = []
-    if request.method == "POST":
-
-        search = request.form.get("search")
-        room = request.form.get("select-room")
-        size = request.form.get("select-size")
-        light = request.form.get("light")
-        water = request.form.get("water")
-
-        if search and not room and not size and not light and not water:
-            criteria = mongo.db.plants.find({"$text": {'$search': search}})
-        elif search and not room and not size and not light and water:
-            criteria = mongo.db.plants.find(
-                {"$and": [{"watering": "10 - 14 days"},
-                 {"$text": {'$search': search}}]}
-                 )
-        elif search and room and size and light and water:
-            criteria = mongo.db.plants.find(
-                {"$and": [{"watering": "10 - 14 days"},
-                 {"light_needed": "Shade"},
-                 {"size": size},
-                 {"room": room},
-                 {"$text": {'$search': search}}]}
-            )
-
-    plants = list(criteria)
-
+    if len(query_params) > 0:
+        query = {"$and": query_params}
+        plants = list(mongo.db.plants.find(query))
+    else:
+        plants = list(mongo.db.plants.find())
     return render_template(
-        "plants.html", plants=plants)
+        "plants.html", plants=plants, search=search,
+        room=room, size=size, light=light, water=water)
 
 
 @app.route("/register", methods=("GET", "POST"))
@@ -164,7 +156,7 @@ def add_plant():
         }
         mongo.db.plants.insert_one(plant)
         flash("Plant Added")
-        return redirect(url_for("all_plants"))
+        return redirect(url_for("plants"))
 
     return render_template("add_plant.html")
 
@@ -194,7 +186,12 @@ def edit(plant_id):
 def delete(plant_id):
     mongo.db.plants.remove({"_id": ObjectId(plant_id)})
     flash("Plant Deleted")
-    return redirect(url_for("all_plants"))
+    return redirect(url_for("plants"))
+
+
+@app.errorhandler(404)
+def page_not_found(err):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":

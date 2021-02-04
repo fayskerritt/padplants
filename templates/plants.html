@@ -4,35 +4,35 @@
     <h1 class="header text-center">All Plants</h1>
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <form action="{{ url_for('search') }}" method="post" class="form-inline">
+            <form action="{{ url_for('plants') }}" method="get" class="form-inline">
                 <div class="text-center">
-                    <select name="select-room" id="select-room" class="form-select-inline my-2 p-2">
+                    <select name="room" id="room" class="form-select-inline my-2 p-2">
                         <option value="">All Rooms</option>
-                        <option value="Bathroom">Bathroom</option>
-                        <option value="Bedroom">Bedroom</option>
-                        <option value="Living Room">Living Room</option>
-                        <option value="Study">Study</option>
-                        <option value="Kitchen">Kitchen</option>
+                        <option value="Bathroom" {{ 'selected' if room == 'Bathroom' }}>Bathroom</option>
+                        <option value="Bedroom" {{ 'selected' if room == 'Bedroom' }}>Bedroom</option>
+                        <option value="Living Room" {{ 'selected' if room == 'Living Room' }}>Living Room</option>
+                        <option value="Study" {{ 'selected' if room == 'Study' }}>Study</option>
+                        <option value="Kitchen" {{ 'selected' if room == 'Kitchen' }}>Kitchen</option>
                     </select>
-                    <select name="select-size" id="select-size" class="form-select-inline my-2 p-2">
+                    <select name="size" id="size" class="form-select-inline my-2 p-2">
                         <option value="">All Sizes</option>
-                        <option value="Small">Small</option>
-                        <option value="Mediium">Medium</option>
-                        <option value="Large">Large</option>
+                        <option value="Small" {{ 'selected' if size == 'Small' }}>Small</option>
+                        <option value="Medium" {{ 'selected' if size == 'Medium' }}>Medium</option>
+                        <option value="Large" {{ 'selected' if size == 'Large' }}>Large</option>
                     </select>
                     <div class="form-check form-check-inline m-2">
-                        <input class="form-check-input" type="checkbox" name="light" id="light" value="Shade">
+                        <input class="form-check-input" type="checkbox" name="light" id="light" value="Shade" {{ 'checked' if light == 'Shade' }}>
                         <label class="form-check-label" for="light"><i class="fas fa-cloud"></i> Low Light</label>
                     </div>
                     <div class="form-check form-check-inline m-2">
-                        <input class="form-check-input" type="checkbox" name="water" id="water" value="7 - 14 days">
+                        <input class="form-check-input" type="checkbox" name="water" id="water" value="10-14" {{ 'checked' if water == '10-14' }}>
                         <label class="form-check-label" for="water"><i class="fas fa-tint-slash"></i> Less Watering</label>
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    <input class="form-control-inline plant-search" type="text" id="search" name="search" minlength="3" placeholder="Search Plants" aria-label="plant-search">
+                    <input class="form-control-inline plant-search" type="text" id="search" name="search" value="{{ search if search }}" minlength="3" placeholder="Search Plants" aria-label="plant-search">
                     <button type="submit" id="button" class="btn btn-dark">Search</button>
-                    <button class="btn btn-dark" type="button"><a href="{{ url_for('all_plants') }}">Reset</a></button>
+                    <button class="btn btn-dark" type="button"><a href="{{ url_for('plants') }}">Reset</a></button>
                 </div>
             </form>
         </div>
@@ -47,7 +47,7 @@
                         <p class="card-text">{{ plant.botanical_name.upper() }}<br></p>
                         <h6 class="card-feature">Plant size - {{ plant.size }}</h6>
                         <p>{{ plant.description }}</p>
-                        <h6 class="card-feature">Likes to be watered every {{ plant.watering }}</h6>
+                        <h6 class="card-feature">Likes to be watered every {{ plant.watering }} days</h6>
                         <ul class="features">
                             {% if plant.room %}
                                 <li>
