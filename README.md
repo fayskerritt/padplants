@@ -4,7 +4,7 @@
 
 Pad Plants is a community web app that allows users to view a variety of house plants with specific details about how to care for them in your home. Users can register a profile on the site which will allow them to add, edit and delete plants on the web app.
 
-[Link to deployed site on Heroku](https://pad-plants.herokuapp.com/)
+[View the deployed site on Heroku](https://pad-plants.herokuapp.com/)
 
 ## UX
 User Stories:

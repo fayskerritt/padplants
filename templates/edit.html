@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set active_page = "edit" %}
 {% block content %}
 
     <h1 class="header text-center">Edit Plant</h1>
@@ -7,7 +8,7 @@
         <!-- plant name -->
         <div class="mb-3">
             <label for="name" class="form-label">Plant Name</label>
-            <input type="text" class="form-control" id="name" name="name" minlength="3" maxlength="20" value="{{ plant.name }}" placeholder="Commonly known name" required>
+            <input type="text" class="form-control" id="name" name="name" minlength="3" maxlength="30" value="{{ plant.name }}" placeholder="Commonly known name" required>
         </div>
         <!-- botanical name -->
         <div class="mb-3">

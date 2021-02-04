@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set active_page = "plants" %}
 {% block content %}
 
     <h1 class="header text-center">All Plants</h1>
@@ -8,24 +9,24 @@
                 <div class="text-center">
                     <select name="room" id="room" class="form-select-inline my-2 p-2">
                         <option value="">All Rooms</option>
-                        <option value="Bathroom" {{ 'selected' if room == 'Bathroom' }}>Bathroom</option>
-                        <option value="Bedroom" {{ 'selected' if room == 'Bedroom' }}>Bedroom</option>
-                        <option value="Living Room" {{ 'selected' if room == 'Living Room' }}>Living Room</option>
-                        <option value="Study" {{ 'selected' if room == 'Study' }}>Study</option>
-                        <option value="Kitchen" {{ 'selected' if room == 'Kitchen' }}>Kitchen</option>
+                        <option value="Bathroom" {% if room == 'Bathroom' %} selected {% endif %}>Bathroom</option>
+                        <option value="Bedroom" {% if room == 'Bedroom' %} selected {% endif %}>Bedroom</option>
+                        <option value="Living Room" {% if room == 'Living Room' %} selected {% endif %}>Living Room</option>
+                        <option value="Study" {% if room == 'Study' %} selected {% endif %}>Study</option>
+                        <option value="Kitchen" {% if room == 'Kitchen' %} selected {% endif %}>Kitchen</option>
                     </select>
                     <select name="size" id="size" class="form-select-inline my-2 p-2">
                         <option value="">All Sizes</option>
-                        <option value="Small" {{ 'selected' if size == 'Small' }}>Small</option>
-                        <option value="Medium" {{ 'selected' if size == 'Medium' }}>Medium</option>
-                        <option value="Large" {{ 'selected' if size == 'Large' }}>Large</option>
+                        <option value="Small" {% if size == 'Small' %} selected {% endif %}>Small</option>
+                        <option value="Medium" {% if size == 'Medium' %} selected {% endif %}>Medium</option>
+                        <option value="Large" {% if size == 'Large' %} selected {% endif %}>Large</option>
                     </select>
                     <div class="form-check form-check-inline m-2">
-                        <input class="form-check-input" type="checkbox" name="light" id="light" value="Shade" {{ 'checked' if light == 'Shade' }}>
+                        <input class="form-check-input" type="checkbox" name="light" id="light" value="Shade" {% if light == 'Shade' %} checked {% endif %}>
                         <label class="form-check-label" for="light"><i class="fas fa-cloud"></i> Low Light</label>
                     </div>
                     <div class="form-check form-check-inline m-2">
-                        <input class="form-check-input" type="checkbox" name="water" id="water" value="10-14" {{ 'checked' if water == '10-14' }}>
+                        <input class="form-check-input" type="checkbox" name="water" id="water" value="10-14" {% if water == '10-14' %} checked {% endif %}>
                         <label class="form-check-label" for="water"><i class="fas fa-tint-slash"></i> Less Watering</label>
                     </div>
                 </div>
@@ -37,6 +38,7 @@
             </form>
         </div>
     </div>
+    {% if plants %}
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for plant in plants %}
             <div class="col">
@@ -109,6 +111,12 @@
 
             </div>
         {% endfor %}
+        {% else %}
+            <div class="col-12 text-center no-plants">
+                <h4>No plants found</h4>
+                <button class="btn btn-dark" type="button"><a href="{{ url_for('add_plant') }}">Add Plant</a></button>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}

@@ -34,20 +34,27 @@ def plants():
 
     if search:
         query_params.append({"$text": {'$search': search}})
-    elif room:
+
+    if room:
         query_params.append({"room": room})
-    elif size:
+
+    if size:
         query_params.append({"size": size})
-    elif light:
+
+    if light:
         query_params.append({"light_needed": "Shade"})
-    elif water:
-        query_params.append({"watering": "10 - 14 days"})
+
+    if water:
+        query_params.append({"watering": "10-14"})
+
+    print(f"QUERY PARAMS: {query_params}")
 
     if len(query_params) > 0:
         query = {"$and": query_params}
         plants = list(mongo.db.plants.find(query))
     else:
         plants = list(mongo.db.plants.find())
+
     return render_template(
         "plants.html", plants=plants, search=search,
         room=room, size=size, light=light, water=water)
