@@ -7,9 +7,9 @@
             <h1 class="header">Plants for your pad</h1>
             <p>Join our community to discover the best houseplants for your home and share your favourites with others.</p>
             {% if session.user %}
-                <button class="btn btn-dark" type="button"><a href="{{ url_for('add_plant') }}">Add a Plant</a></button>
+                <a href="{{ url_for('add_plant') }}" class="btn btn-dark">Add a Plant</a>
             {% else %}
-                <button class="btn btn-dark" type="button"><a href="{{ url_for('register') }}">Register</a></button>
+                <a href="{{ url_for('register') }}" class="btn btn-dark">Register</a>
             {% endif %}
         </div>
         <div class="col-md-5">
@@ -26,7 +26,7 @@
                 boost your mood and purify the air that you breath.<br>
                 Check out our range of plants for some inspiration.
             </p>
-            <button class="btn btn-dark" type="button"><a href="{{ url_for('plants') }}">Browse Plants</a></button>
+            <a href="{{ url_for('plants') }}" class="btn btn-dark">Browse Plants</a>
         </div>
         <div class="col-md-5">
             <img class="image" src="{{ url_for('static', filename='img/img2.jpg') }}" alt="Plant image">

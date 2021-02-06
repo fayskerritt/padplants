@@ -24,14 +24,28 @@ def home():
 
 @app.route("/plants")
 def plants():
+
+    """
+        Pulls plant data from database depending on search parameters
+        input by user in search form
+
+        Creates key:value pairs from input and stores them in query_params
+        list which is then pulled from db
+
+        Returns: displays matching plants from db in plants.html
+
+    """
+
     plants = []
     query_params = []
+    # find input values from form
     search = request.args.get("search")
     room = request.args.get("room")
     size = request.args.get("size")
     light = request.args.get("light")
     water = request.args.get("water")
 
+    # check to see if each search input has a value
     if search:
         query_params.append({"$text": {'$search': search}})
 

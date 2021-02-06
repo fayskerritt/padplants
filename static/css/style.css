@@ -30,16 +30,20 @@ button a {
     color: #fff;
 }
 
-.btn a:hover, .btn a:focus {
+.btn {
+    color: #fff;
+}
+
+a.btn:hover, a.btn:focus {
     color: #95e3899c;
     text-decoration: none;
 }
 
-#btn:hover, #btn:focus {
+.btn:hover, .btn:focus {
     color: #95e3899c;
 }
 
-#button:hover, #button:focus {
+#btn:hover, #btn:focus {
     color: #95e3899c;
 }
 

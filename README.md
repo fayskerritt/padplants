@@ -141,7 +141,10 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 
 # Testing
-
+### Code Validation
+* HTML Validator
+* CSS Validator
+* 
 
 
 # Deployment
@@ -159,7 +162,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
     `room:` "Living Room"\
     `img_url:` "https://images.unsplash.com/photo-1510505751526-76254482fd38?ixid=MXwx..."
 
-* These keys were the used when adding any more pants to the database.
+* These keys were then used when adding any more plants to the database.
 
 ### Deploy App to Heroku
 *In Gitpod:*
