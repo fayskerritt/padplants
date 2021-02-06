@@ -47,8 +47,6 @@ def plants():
     if water:
         query_params.append({"watering": "10-14"})
 
-    print(f"QUERY PARAMS: {query_params}")
-
     if len(query_params) > 0:
         query = {"$and": query_params}
         plants = list(mongo.db.plants.find(query))
@@ -106,12 +104,12 @@ def login():
         if existing_user:
             # check if hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome {}".format(
-                        request.form.get("username").capitalize()))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome Back {}".format(
+                    request.form.get("username").capitalize()))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # incorrect password
                 flash("Incorrect Username and/or Password")

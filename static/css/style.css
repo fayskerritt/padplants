@@ -60,7 +60,7 @@ form {
 .header {
     padding: 20px 0 10px 0;
     margin-bottom: 20px;
-    border-bottom: 1px solid rgb(131, 193, 123, 0.5);
+    border-bottom: 1px solid #83c17b80;
 }
 
 .btn {
@@ -78,7 +78,7 @@ form {
 }
 
 .banner {
-    background-color: #66b75a9c;
+    background-color: #9ec799;
     border-radius: 2px;
     padding: 15px 15px 8px 15px;
 }
@@ -164,14 +164,14 @@ footer a {
 }
 
 .card-feature {
-    border: 1px solid #66b75a9c;
+    border: 1px solid #83c17B;
     border-radius: 15px;
     padding: 7px 10px 7px 10px;
     margin: 0 7px 7px 0;
 }
 
 .features li {
-    background-color: #66b75a9c;
+    background-color: #83c17B;
     color: #000;
     border-radius: 15px;
     padding: 7px 10px 7px 10px;
