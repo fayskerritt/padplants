@@ -39,17 +39,22 @@
         </div>
     </div>
     {% if plants %}
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
         {% for plant in plants %}
             <div class="col">
-                <div class="card h-100 shadow">
-                    <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/plantdefault.jpg';">
+                <div class="card shadow mx-auto">
+                    <div class="img">
+                        <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/default.png';">
+                    </div>
                     <div class="card-body">
                         <h4 class="card-title">{{ plant.name }}</h4>
                         <p class="card-text">{{ plant.botanical_name.upper() }}<br></p>
                         <h6 class="card-feature">Plant size - {{ plant.size }}</h6>
-                        <p>{{ plant.description }}</p>
+                        <div class="description">
+                            <p>{{ plant.description }}</p>
+                        </div>
                         <h6 class="card-feature">Likes to be watered every {{ plant.watering }} days</h6>
+                        <div class="features-container">
                         <ul class="features">
                             {% if plant.room %}
                                 <li>
@@ -80,6 +85,7 @@
                                 </li>
                             {% endif %}
                         </ul>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
@@ -114,7 +120,11 @@
         {% else %}
             <div class="col-12 text-center no-plants">
                 <h4>No plants found</h4>
-                <a href="{{ url_for('add_plant') }}" class="btn btn-dark">Add Plant</a>
+                {% if session.user %}
+                    <a href="{{ url_for('add_plant') }}" class="btn btn-dark">Add Plant</a>
+                {% else %}
+                    <p class="text-center p-20">Register <a href="{{ url_for('register') }}">here</a> to add a plant</p>
+                {% endif %}
             </div>
         {% endif %}
     </div>

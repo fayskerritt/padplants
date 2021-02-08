@@ -144,7 +144,42 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 ### Code Validation
 * HTML Validator
 * CSS Validator
-* 
+* JSHint
+* PEP8
+
+### Testing User Stories
+#### New User
+* As a new user, I want to understand the main purpose of the site, so I can learn more about the site’s features.
+    * Once loaded, the home page clearly explains the sites purpose and prompts the user to register so that they can "discover the best houseplants for your home and share your favourites with others", the register button takes the user to the Registration page.
+* As a new user, I want to see the plants featured on the website, so I can learn more about plants.
+    * Clearly labelled "Plants" tab in the Navbar or "Browse" button on the homepage takes the user to the plants.html page where all plants in the database are displayed once loaded. The user can scroll this list to see all plants, or alternatively use the search form to search using the different inputs.
+* As a new user, I want to be shown where I can buy plants, so I can purchase a house plant.
+    * On the home page there is a link to the "plant store", this stands out on a clear green background and the link takes the user to an Amazon 'Houseplants' search, which in the future will be set up to a Pad Plants store.
+
+#### Returning User
+* As a returning user, I want to register to the site, so I have my own profile to store my information.
+    * On the home page the "Register" button takes the user to the registration page, where the form requires the user to enter a username and password, then to re-enter the password to ensure the user has correctly entered their desired password. The form has 3 required inputs which will flag with an exclamation mark if the entry is not valid. The username is required to be between 5 and 15 characters and the following charactders are allowed; A-Z a-z 0-9 ! @ # $ % ^ & * _ = + - this is the same for the password fields.
+* As a returning user, I want to add plants to the database, so I can share my plant knowledge with the community.
+    * Create functionality provides the user with a form to add in details about the plant. 
+    * There are three text input fields; "Name" which is required and must be between 3 and 30 characters, "Botanical Name" which is not required and must also be between 3 and 30 characters then "Description" which is required and must be between 5 and 200 characters. 
+    * Two drop down select options allow the user to choose the watering schedule and size of plant.
+* As a returning user, I want to have access to all plants added by other members, so I can benefit from other people's knowledge.
+* As a returning user, I want to be able to logout of my profile, so I can keep my data safe.
+
+#### Frequent User
+* As a frequent user, I want to edit my added plants, so I can keep the information current.
+* As a frequent user, I want to search for specific plants, so I can find information about plants I own.
+* As a frequent user, I want to be able to delete my added plants, so I can ensure no duplicates in the database.
+* As a frequent user, I want to view all plants with specific filters, so I can choose a new house plant to suit my needs.
+
+#### Site Owner/Developer
+* As the owner/developer, I want to expand my database of plants, so I can broaden my knowledge.
+* As the owner/developer, I want to redirect users to a store, so I can gain sales from people intereted in plants.
+* As the owner/developer, I want to grow my community of plant lovers, so I have an audience of potential customers.
+
+
+### Manual Testing
+
 
 
 # Deployment

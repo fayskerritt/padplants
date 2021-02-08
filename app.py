@@ -27,12 +27,9 @@ def plants():
 
     """
         Pulls plant data from database depending on search parameters
-        input by user in search form
+        input by user in search form.
 
-        Creates key:value pairs from input and stores them in query_params
-        list which is then pulled from db
-
-        Returns: displays matching plants from db in plants.html
+        Return: displays matching plants from db in plants.html.
 
     """
 
@@ -65,7 +62,7 @@ def plants():
         query = {"$and": query_params}
         plants = list(mongo.db.plants.find(query))
     else:
-        plants = list(mongo.db.plants.find())
+        plants = list(mongo.db.plants.find().sort("_id", -1))
 
     return render_template(
         "plants.html", plants=plants, search=search,
@@ -74,6 +71,14 @@ def plants():
 
 @app.route("/register", methods=("GET", "POST"))
 def register():
+
+    """
+        Requires a unique username and password to create an account
+        for user that is added to user database.
+
+        Return: If successful, takes user to the profile page.
+
+    """
 
     if request.method == "POST":
         # check to see if username exists already in mongo db
@@ -87,6 +92,7 @@ def register():
         password = request.form.get("password")
         confirm_password = request.form.get("confirm-password")
 
+        # ensure passwords match
         if password != confirm_password:
             flash("Passwords did not match! Please try again.")
             return redirect(url_for("register"))
@@ -110,6 +116,15 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
+    """
+        Requires the unique username and password used when registering
+        to grant access to the users account.
+
+        Return: If credentials correct takes user to profile page.
+
+    """
+
     if request.method == "POST":
         # check if username already exists in mongo db
         existing_user = mongo.db.users.find_one(
@@ -139,12 +154,22 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+
+    """
+        Gets user data from database and displays all plants that current
+        user created using the created_by key.
+
+        Return: A list of plants created by current user from database.
+
+    """
+
     # username from mongo db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        plants = list(mongo.db.plants.find({"created_by": username.lower()}))
+        plants = list(mongo.db.plants.find(
+            {"created_by": username.lower()}).sort("_id", -1))
         return render_template(
             "profile.html", username=username, plants=plants)
 
@@ -153,6 +178,15 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
+
+    """
+        Deletes user cookies for current session.
+
+        Return: Will take user back to the login page and require credentials
+        to log back in.
+
+    """
+
     # delete session cookies for user
     flash("You are now logged out")
     session.pop("user")
@@ -161,6 +195,14 @@ def logout():
 
 @app.route("/add_plant", methods=["GET", "POST"])
 def add_plant():
+
+    """
+        Adds data from form to database as a new data entry.
+
+        Return: Add Plant form that adds inputs to the database.
+
+    """
+
     if request.method == "POST":
         plant = {
             "name": request.form.get("name"),
@@ -182,6 +224,16 @@ def add_plant():
 
 @app.route("/edit<plant_id>", methods=["GET", "POST"])
 def edit(plant_id):
+
+    """
+        Using the ID of the plant, pulls the current key value pairs from
+        the database then updates these with any changes the user has made.
+
+        Return: An edit form with the current data of the plant from the
+        database with the option to change and submit changes.
+
+    """
+
     if request.method == "POST":
         submit = {
             "name": request.form.get("name"),
@@ -203,6 +255,14 @@ def edit(plant_id):
 
 @app.route("/delete<plant_id>")
 def delete(plant_id):
+
+    """
+        Deletes the plant document in the database, finding it by its ID.
+
+        Return: Deletes data and returns user to the plants page.
+
+    """
+
     mongo.db.plants.remove({"_id": ObjectId(plant_id)})
     flash("Plant Deleted")
     return redirect(url_for("plants"))
@@ -210,10 +270,18 @@ def delete(plant_id):
 
 @app.errorhandler(404)
 def page_not_found(err):
+
+    """
+        Detects any errors in the url.
+
+        Return: 404 page with a link back to browse.
+
+    """
+
     return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

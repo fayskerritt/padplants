@@ -19,7 +19,7 @@
             {% for plant in plants %}
                 <div class="col">
                     <div class="card h-100 shadow">
-                        <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/plantdefault.jpg';">
+                        <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/default.jpg';">
                         <div class="card-body">
                             <h4 class="card-title">{{ plant.name }}</h4>
                             <p class="card-text">{{ plant.botanical_name.upper() }}<br></p>
