@@ -1,99 +1,105 @@
 {% extends "base.html" %}
 {% set active_page = "profile" %}
 {% block content %}
-<div class="profile">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <img class="image" src="{{ url_for('static', filename='img/img3.jpg') }}" alt="Photo of plants">
+    <div class="profile">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <img class="image" src="{{ url_for('static', filename='img/img3.jpg') }}" alt="Photo of plants">
+            </div>
+            <div class="col-md-8 my-auto">
+                <h1 class="header text-center">{{ username.capitalize() }}'s Pad Plants Profile <i class="fas fa-seedling"></i></h1>
+            </div>
         </div>
-        <div class="col-md-8 my-auto">
-            <h1 class="header text-center">{{ username.capitalize() }}'s Pad Plants Profile <i class="fas fa-seedling"></i></h1>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col text-center">
-            <h4 class="header">Your Plants</h4>
-        </div>
-        {% if plants %}
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h4 class="header">Your Plants</h4>
+            </div>
+             {% if plants %}
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
             {% for plant in plants %}
                 <div class="col">
-                    <div class="card h-100 shadow">
-                        <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/default.jpg';">
+                    <div class="card shadow mx-auto">
+                        <div class="img">
+                            <img src="{{ plant.img_url }}" class="card-img-top" alt="Plant photo" onerror="this.onerror=null;this.src='/static/img/default.jpg';">
+                        </div>
                         <div class="card-body">
                             <h4 class="card-title">{{ plant.name }}</h4>
                             <p class="card-text">{{ plant.botanical_name.upper() }}<br></p>
                             <h6 class="card-feature">Plant size - {{ plant.size }}</h6>
-                            <p>{{ plant.description }}</p>
+                            <div class="description">
+                                <p>{{ plant.description }}</p>
+                            </div>
                             <h6 class="card-feature">Likes to be watered every {{ plant.watering }}</h6>
-                            <ul class="features">
-                                {% if plant.room %}
-                                    <li>
-                                        {{ plant.room }} 
-                                        {% if plant.room == 'Bathroom' %}
-                                            <i class="fas fa-bath fa-lg icon"></i>
-                                        {% elif plant.room == 'Bedroom' %}
-                                            <i class="fas fa-bed fa-lg icon"></i>
-                                        {% elif plant.room == 'Living Room' %}
-                                            <i class="fas fa-couch fa-lg icon"></i>
-                                        {% elif plant.room == 'Study' %}
-                                            <i class="fas fa-desktop fa-lg icon"></i>
-                                        {% else %}
-                                            <i class="fas fa-utensils fa-lg icon"></i>
-                                        {% endif %}
-                                    </li>
-                                {% endif %}
-                                {% if plant.light_needed %}
-                                    <li>
-                                        {{ plant.light_needed }}
-                                        {% if plant.light_needed == 'Shade' %}
-                                            <i class="fas fa-cloud fa-lg icon"></i>
-                                        {% elif plant.light_needed == 'Direct Sunlight' %}
-                                            <i class="fas fa-cloud-sun fa-lg icon"></i>
-                                        {% else %}
-                                            <i class="fas fa-sun fa-lg icon"></i>
-                                        {% endif %}
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                            <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
-                            {% if session.user|lower == plant.created_by|lower or session.user|lower == 'admin' %}
-                                <a href="{{ url_for('edit', plant_id=plant._id) }}" class="btn btn-sm edit">Edit</a>
-                                <button class="btn btn-sm delete" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
-                            {% endif %}
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="delete{{plant._id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Confirm Deletion</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete this plant?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" id="btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <a href="{{ url_for('delete', plant_id=plant._id) }}" class="btn delete">Delete</a>
-                                    </div>
-                                    </div>
+                            <div class="features-container">
+                                <ul class="features">
+                                    {% if plant.room %}
+                                        <li>
+                                            {{ plant.room }} 
+                                            {% if plant.room == 'Bathroom' %}
+                                                <i class="fas fa-bath fa-lg icon"></i>
+                                            {% elif plant.room == 'Bedroom' %}
+                                                <i class="fas fa-bed fa-lg icon"></i>
+                                            {% elif plant.room == 'Living Room' %}
+                                                <i class="fas fa-couch fa-lg icon"></i>
+                                            {% elif plant.room == 'Study' %}
+                                                <i class="fas fa-desktop fa-lg icon"></i>
+                                            {% else %}
+                                                <i class="fas fa-utensils fa-lg icon"></i>
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                    {% if plant.light_needed %}
+                                        <li>
+                                            {{ plant.light_needed }}
+                                            {% if plant.light_needed == 'Shade' %}
+                                                <i class="fas fa-cloud fa-lg icon"></i>
+                                            {% elif plant.light_needed == 'Direct Sunlight' %}
+                                                <i class="fas fa-cloud-sun fa-lg icon"></i>
+                                            {% else %}
+                                                <i class="fas fa-sun fa-lg icon"></i>
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                    </ul>
                                 </div>
-                            </div>  
-                        </div>
-                    </div>
+                            </div>
+                            <div class="card-footer">
+                                <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
+                                {% if session.user|lower == plant.created_by|lower or session.user|lower == 'admin' %}
+                                    <a href="{{ url_for('edit', plant_id=plant._id) }}" class="btn btn-sm edit">Edit</a>
+                                    <button class="btn btn-sm delete" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
+                                {% endif %}
 
+                                <!-- Modal -->
+                                <div class="modal fade" id="delete{{plant._id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Confirm Deletion</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this plant?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <a href="{{ url_for('delete', plant_id=plant._id) }}" class="btn delete">Delete</a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+                {% else %}
+                <div class="col-12 text-center no-plants">
+                    <p>You haven't added any plants yet.</p>
+                    <a href="{{ url_for('add_plant') }}" class="btn btn-dark">Add Plant</a>
                 </div>
-            {% endfor %}
-            {% else %}
-            <div class="col-12 text-center no-plants">
-                <p>You haven't added any plants yet.</p>
-                <a href="{{ url_for('add_plant') }}" class="btn btn-dark">Add Plant</a>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
     </div>
-</div>
 {% endblock %}

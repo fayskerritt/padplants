@@ -90,9 +90,11 @@
                     <div class="card-footer">
                         <p><small class="text-muted"> <em>Created by: {{ plant.created_by }}</em></small></p>
                         {% if session.user|lower == plant.created_by|lower or session.user|lower == 'admin' %}
-                            <a href="{{ url_for('edit', plant_id=plant._id) }}" class="btn btn-sm edit">Edit</a>
-                            <button class="btn btn-sm delete" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
-                        {% endif %}
+                            <div class="buttons">
+                                <a href="{{ url_for('edit', plant_id=plant._id) }}" class="btn btn-sm edit">Edit</a>
+                                <button class="btn btn-sm delete" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
+                            </div>
+                            {% endif %}
 
                         <!-- Modal -->
                         <div class="modal fade" id="delete{{plant._id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -114,7 +116,6 @@
                         </div>  
                     </div>
                 </div>
-
             </div>
         {% endfor %}
         {% else %}
@@ -128,5 +129,4 @@
             </div>
         {% endif %}
     </div>
-
 {% endblock %}

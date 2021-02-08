@@ -198,6 +198,7 @@ footer a {
     overflow: scroll;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .plant-search {
@@ -206,13 +207,23 @@ footer a {
     margin: 10px 0px;
 }
 
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .edit {
     background-color: #3f7a90;
+    margin-right: 5px;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .delete {
     background-color: #b94b32;
     color: #fff;
+    margin-left: 5px;
 }
 
 /* login/register */

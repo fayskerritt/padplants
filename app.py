@@ -168,8 +168,7 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        plants = list(mongo.db.plants.find(
-            {"created_by": username.lower()}).sort("_id", -1))
+        plants = list(mongo.db.plants.find({"created_by": username.lower()}))
         return render_template(
             "profile.html", username=username, plants=plants)
 
@@ -284,4 +283,4 @@ def page_not_found(err):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
