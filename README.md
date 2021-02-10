@@ -165,10 +165,10 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 # Testing
 ### Code Validation
-* HTML Validator - All pages passed except from empty option tag on add_plant form which is required for 
-* CSS Validator
-* JSHint
-* PEP8
+* [HTML Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fpad-plants.herokuapp.com%2F) - No errors found
+* [CSS Validator](https://jigsaw.w3.org/css-validator/validator) - No errors found 
+* [JSHint](https://jshint.com/) - No issues found 
+* [PEP8](http://pep8online.com) - No issues found
 
 ### Testing User Stories
 #### New User
@@ -220,6 +220,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 * All external links are clearly labelled, work correctly and open in a new tab.
 * All buttons are clearly labelled and work correctly.
 * All forms submit data in the correct format for the database and provide the correct options for the user to choose from.
+* All inputs, dropdown menus and checkboxes work correctly and submitting these displays the correct results.
 * Cookies work correctly when logging in and logging out.
 * All photos render clearly and the correct size and position.
 * All plant information renders clearly and the correct size and position.
@@ -330,18 +331,3 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 ### Acknowledgements
 * Mentor sessions helped me figure out how to fix my search functionality to combine checked boxes with text. 
-
-
-> Stand out text in box 
-
-**Bold Text Large** 
---------
-
-**Bold Text Small**
-
-
-*Italic Large*
---------
-
-*Italic Small*
-
