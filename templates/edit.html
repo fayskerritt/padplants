@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "edit" %}
 {% block content %}
+    {% if session.user|lower == plant.created_by|lower or session.user|lower == 'admin' %}
 
     <h1 class="header text-center">Edit Plant</h1>
 
@@ -237,6 +238,12 @@
             <button type="submit" id="button" class="btn btn-dark">Save</button>
         </div>
     </form>
+    {% else %}
+        <div class="mb-3 text-center">
+            <p class="text-center p-20">Sorry you can only edit plants that you have added.</p>
+            <a href="{{ url_for('plants') }}" class="btn btn-dark">Cancel</a>
+        </div>
+    {% endif %}
 
 
 {% endblock %}

@@ -227,10 +227,8 @@ def edit(plant_id):
     """
         Using the ID of the plant, pulls the current key value pairs from
         the database then updates these with any changes the user has made.
-
         Return: An edit form with the current data of the plant from the
         database with the option to change and submit changes.
-
     """
 
     if request.method == "POST":
@@ -257,9 +255,7 @@ def delete(plant_id):
 
     """
         Deletes the plant document in the database, finding it by its ID.
-
         Return: Deletes data and returns user to the plants page.
-
     """
 
     mongo.db.plants.remove({"_id": ObjectId(plant_id)})

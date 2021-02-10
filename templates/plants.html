@@ -94,7 +94,7 @@
                                 <a href="{{ url_for('edit', plant_id=plant._id) }}" class="btn btn-sm edit">Edit</a>
                                 <button class="btn btn-sm delete" type="button" data-bs-toggle="modal" data-bs-target="#delete{{plant._id}}">Delete</button>
                             </div>
-                            {% endif %}
+                        {% endif %}
 
                         <!-- Modal -->
                         <div class="modal fade" id="delete{{plant._id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

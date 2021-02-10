@@ -57,33 +57,56 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 **Home page:**
 
 * 2 column structure on larger screens which changes to 1 on smaller screens. Had to use a Bootstrap row-reverse class to switch the second image and text to show opposite to the top whilst still showing text - image - text - image on a mobile device.
-    * Figma screenshot - [Home](https://)
+    * Figma screenshot - [Home](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/homewireframe.png)
 
 **Plants page:**
 
 * Wireframe shows a hero image but during development the page looked too busy with an image so left that out.
-    * Figma screenshot - [Plants](https://)
+    * Figma screenshot - [Plants](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/plantswireframe.png)
 
 **Profile page:**
 
 * Image added to the side of the Username as page looked quite bare for new users.
-    * Figma screenshot - [Profile](https://)
+    * Figma screenshot - [Profile](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/profilewireframe.png)
 
 **Add Plant page:**
 
 * Page copied to create Edit page by filling in the inputs from the database
 * Font Awesome icons used to represent the 3 different light conditions; Shade, Light & Shade and Direct Sunlight. Also to represent the 5 rooms; Bathroom, Bedroom, Living Room, Study and Kitchen.
-    * Figma screenshot - [Add Plant](https://)
+    * Figma screenshot - [Add Plant](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/addwireframe.png)
 
 **Login page:**
 
 * Simple form, ended up adding Font Awesome icons to the Username and Password Labels
-    * Figma screenshot - [Login](https://)
+    * Figma screenshot - [Login](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/loginwireframe.png)
 
 **Register page:**
 
 * Same form layout as Login page with extra input to confirm password, this was to prevent an error when entering their password first time round.
-    * Figma screenshot - [Register](https://)
+    * Figma screenshot - [Register](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/registerwireframe.png)
+
+### Creation of database on MongoDB:
+* Once registered and logged in to [MongoDB](https://www.mongodb.com/) a database was created named 'pad-plants' and a document was added to the Plant collection with the following 'key: value' pairs:
+
+    `_id:` (str)\
+    `name:` (str)\
+    `botanical_name:` (str)\
+    `description:` (str)\
+    `watering:` (str)\
+    `size:` (str)\
+    `light_needed:` (str)\
+    `room:` (str)\
+    `img_url:` (str)
+
+* These keys were used when adding any more plants to the database.
+* The other collection used was Users which had the 'key: value' pairs:
+
+    `_id:` (str)\
+    `username:` (str)\
+    `password:` (str)
+
+* The password string is hashed when the user inputs it using the Werkzeug generate_password_hash method, so is stored as a string.
+
 
 
 # Features
@@ -164,45 +187,82 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
     * There are three text input fields; "Name" which is required and must be between 3 and 30 characters, "Botanical Name" which is not required and must also be between 3 and 30 characters then "Description" which is required and must be between 5 and 200 characters. 
     * Two drop down select options allow the user to choose the watering schedule and size of plant.
 * As a returning user, I want to have access to all plants added by other members, so I can benefit from other people's knowledge.
+    * All plants are visible to all users on the Plants page, in descending order so a returning user can view most recently added plants.
 * As a returning user, I want to be able to logout of my profile, so I can keep my data safe.
+    * Logout option in the navbar will delete session cookies for that user and take them back to the login page where they will need to re-enter their credentials again to log back in.
 
 #### Frequent User
 * As a frequent user, I want to edit my added plants, so I can keep the information current.
+    * Every plant that the currently logged in user has added will have an edit button, which will take the user to an edit form which will fill in the form with the current data from the database and will allow the user to edit each input then save, or alternatively cancel if they decideto no longer edit.
 * As a frequent user, I want to search for specific plants, so I can find information about plants I own.
+    * The Plants page includes a search bar which allows the user to search any word and will search within the database from the name, botanical name and description keys. 
 * As a frequent user, I want to be able to delete my added plants, so I can ensure no duplicates in the database.
+    * Every plant that the currently logged in user has added will have a delete button, which will remove the plant from the database. If clicked there is a pop up that requires the user to confirm deletion to prevent accidental deleting.
 * As a frequent user, I want to view all plants with specific filters, so I can choose a new house plant to suit my needs.
+    * As mentioned above there is a search bar which searches the name, botanical name and description of all plants in the database.
+    * There are also two drop down options which allow the user to choose a room and/or a size. Finally there are two checkboxes; one which will display plants that do not require a lot of light and/or the other which will display plants that do not require frequent watering. 
+    * Each input can be searched on its own or they can be combined to create an advanced search of the list of plants from the database.
 
 #### Site Owner/Developer
 * As the owner/developer, I want to expand my database of plants, so I can broaden my knowledge.
+    * The site is simple to use, users are directed to the register page from the home page as well as if they search for a plant and there are no results.
+    * Logging into the site is easy and when registering you have to confirm your password so users are less likely to forget their credentials.
+    * Adding a plant is also easy, the botanical name is not required so even if users don't have that information they are still able to add a plant.
 * As the owner/developer, I want to redirect users to a store, so I can gain sales from people intereted in plants.
+    * The link to a store is clearly visible to all users on the homepage with a clear green background.
 * As the owner/developer, I want to grow my community of plant lovers, so I have an audience of potential customers.
+    * The site looks nice and is inviting with nice images and a good layout, which will attract users to explore further as well as make them more likely to return.
 
 
 ### Manual Testing
+#### Functionality
+* All internal links are clearly labelled and work correctly.
+* All external links are clearly labelled, work correctly and open in a new tab.
+* All buttons are clearly labelled and work correctly.
+* All forms submit data in the correct format for the database and provide the correct options for the user to choose from.
+* Cookies work correctly when logging in and logging out.
+* All photos render clearly and the correct size and position.
+* All plant information renders clearly and the correct size and position.
+
+#### Database
+* All data inputs to the database follow the same format, whether they are added on the database or through the web app.
+* All updated data through the edit plant button updates the database correctly.
+* All user information is clearly and securely stored in the database.
+
+#### Interface
+* Each page of the web app has the same consistent layout.
+* The font, colour scheme and styling is consistent across the web app.
+* All queries from the database display the plant data clearly and well formatted across both the plant page and profile page.
+* The site link hosted through Heroku displays everything correctly.
+
+#### Security
+* 
+
+#### Accessibility
+#### Compatibility
+#### Usability
+#### Responsiveness
 
 
+#### Bugs
+* Search functionality was coded incorrectly to start with using elif to check if the select inputs and checkboxes had been filled in, which meant that as soon as one of the expressions was true then it would ignore the rest of the elifs. This was fixed by changing it to an if statement for each input area.
+* Add Plant button was visible when no plants could be found when using the search bar, even if the user was not logged in. This was fixed by adding in a jinja if statement to only show the add button if the user was logged in and to show the register button if they were not.
+* Modal pulled ID of first plant in the list, so when trying to delete a specific plant it would delete the first plant instead. This was fixed by adding in a jinja reference to the plant ID in the ID attribute of the modal html element, which fixed the bug. 
+* When adding in plants the URl was not pasted in correctly which caused there to be no photo of the plant, therefor an onerror attribute was added to the plant cards so that a default image was shown instead.
 
 # Deployment
-
-### Creation of database on MongoDB:
-* Once registered and logged in to [MongoDB](https://www.mongodb.com/) a database was created named 'pad-plants' and a document was added to the collection with the following 'key: value' pairs:
-
-    `_id:` ObjectId("601d0df2d8826e322ef74701")\
-    `name:` "Swiss Cheese Plant"\
-    `botanical_name:` "Monstera Deliciosa"\
-    `description:` "A green plant with heart shaped leaves that develop as the plant grows..."\
-    `watering:` "7-10"\
-    `size:` "Medium"\
-    `light_needed:` "Light and Shade"\
-    `room:` "Living Room"\
-    `img_url:` "https://images.unsplash.com/photo-1510505751526-76254482fd38?ixid=MXwx..."
-
-* These keys were then used when adding any more plants to the database.
 
 ### Deploy App to Heroku
 *In Gitpod:*
 
-Once the Flask App is created with all sensitive files including the `env.py` added to the `.gitignore` file: 
+* Once the Flask App is created, the following OS default environment variables were set in the `env.py` file:
+    * "IP", with the IP address you want the app to run on.
+    * "PORT", with the specified port.
+    * "SECRET_KEY", with a value generated from a random key generator.
+    * "MONGO_URI", with the connection string from MongoDB.
+    * "MONGO_DBNAME", with the database name
+
+* This file along with all other sensitive files were added to the `.gitignore` file.
 * To specify the Python package dependencies to Heroku the requirements.txt file was created using the command `pip3 freeze --local > requirements.txt`.
 * The Procfile was also created using the command `echo web: python app.py` to tell Heroku that the `app.py` file uses the Python language.
 
@@ -210,13 +270,13 @@ Once the Flask App is created with all sensitive files including the `env.py` ad
 
 * A new app was created with the name 'pad-plants'.
 * In the 'Deploy Tab' GitHub was connected using the repository name.
-* In the 'Settings' tab of Heroku, the Configuration Variabless were added (these are the 'key:value' pairs that were in the `env.py` file).
+* In the 'Settings' tab of Heroku, the Configuration Variabless were added (these are the 'key:value' pairs that were declared in the `env.py` file).
 * Back in the 'Deploy' tab the 'Enable Automatic Deployment' button was clicked to allow automatic updates from GitHub.
 * The branch was then deployed from the master.
 
 *In Gitpod:*
 
-* The Mongo database is then wired up to our Flask app by adding the Mongo links to the default environment variables.
+* The Mongo database is then wired up to the Flask app by adding the Mongo links to the default environment variables.
 
 ### Local Deployment
 * On the [GitHub Repository](https://github.com/fayskerritt/padplants), click on the '↓ Code' button.
@@ -237,12 +297,13 @@ Once the Flask App is created with all sensitive files including the `env.py` ad
 * The photos used on home.html, profile.html and 404.html are all from [Unsplash](https://unsplash.com/).
 * The Logo in the header and footer was made by myself.
 * The favicon was also designed and created by myself.
+* The photo URLs used for each plant in the database are from a google search.
 
 ### Acknowledgements
 * Mentor sessions helped me figure out how to fix my search functionality to combine checked boxes with text. 
 
 
-> Stand out text
+> Stand out text in box 
 
 **Bold Text Large** 
 --------
