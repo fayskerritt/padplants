@@ -10,6 +10,11 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 ![Mockup](static/img/readme/mockup.png)
 
 # UX
+## Project Goals
+The primary goal of Pad Plants is to provide a place for plant lovers to view and share houseplants with information that is useful for knowing where in your home they will be happiest.\
+
+Working from home may possibly become the new normal for a lot of people, so this web app serves as a platform where users can search for plants that best go in a certain room that they would like to spruce up.
+
 ## User Stories
 ### New User
 * As a new user, I want to understand the main purpose of the site, so I can learn more about the site’s features.
@@ -175,50 +180,74 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 ### Testing User Stories
 #### New User
 * As a new user, I want to understand the main purpose of the site, so I can learn more about the site’s features.
-    * Once loaded, the home page clearly explains the sites purpose and prompts the user to register so that they can "discover the best houseplants for your home and share your favourites with others", the register button takes the user to the Registration page.
+    * Once loaded, the home page clearly explains the sites purpose and prompts the user to register via a button so that they can "discover the best houseplants for your home and share your favourites with others", when clicked, the register button takes the user to the Registration page.
+    * Tested on different browsers and devices and the layout works well on all, collapsing from 2 columns to 1 on smaller devices.
+    * The register button was tested on all browsers and devices by either clicking or touching depending on device, the registration form successfully loaded on all.
 * As a new user, I want to see the plants featured on the website, so I can learn more about plants.
-    * Clearly labelled "Plants" tab in the Navbar or "Browse" button on the homepage takes the user to the plants.html page where all plants in the database are displayed once loaded. The user can scroll this list to see all plants, or alternatively use the search form to search using the different inputs.
+    * When clicked, the clearly labelled "Plants" tab in the Navbar or the "Browse" button on the homepage takes the user to the plants.html page where all plants in the database are displayed once loaded. This list is displayed in a card grid format and can be scrolled through to view all plants, or alternatively use the search form to search using the different inputs.
+    * Tested on different browsers and devices and the grid is responsive depending on screen size, looks good on all and displays all information clearly on all.
 * As a new user, I want to be shown where I can buy plants, so I can purchase a house plant.
-    * On the home page there is a link to the "plant store", this stands out on a clear green background and the link takes the user to an Amazon 'Houseplants' search, which in the future will be set up to a Pad Plants store.
+    * On the home page there is a link to the "plant store", this stands out on a clear green background and when clicked, the link takes the user to an Amazon 'Houseplants' search in a new tab, which in the future will be set up to a Pad Plants store.
+    * Tested on different devices and browsers to ensure it always opened in a new tab which it did.
 
 #### Returning User
 * As a returning user, I want to register to the site, so I have my own profile to store my information.
-    * On the home page the "Register" button takes the user to the registration page, where the form requires the user to enter a username and password, then to re-enter the password to ensure the user has correctly entered their desired password. The form has 3 required inputs which will flag with an exclamation mark if the entry is not valid. The username is required to be between 5 and 15 characters and the following characters are allowed; A-Z a-z 0-9 ! @ # $ % ^ & * _ = + - this is the same for the password fields.
+    * On the home page, when clicked, the "Register" button takes the user to the registration page, this page displays a form that requires the user to enter a username and password, then to re-enter the password to ensure the user has correctly entered their desired password. The form has 3 required inputs which will flag with an exclamation mark if the entry is not valid. The username is required to be between 5 and 15 characters and the following characters are allowed; A-Z a-z 0-9 ! @ # $ % ^ & * _ = + - this is the same for the password fields.
+    * Tested by using different formats of username and password including one with lots of symbols and one with none, some with only numbers and all worked fine.
+    * Also tested by leaving some of the inputs blank as well as clicking register without filling anything in. Every time a pop up appeared telling the user to fill in the missing field.
 * As a returning user, I want to add plants to the database, so I can share my plant knowledge with the community.
     * Create functionality provides the user with a form to add in details about the plant. 
     * There are three text input fields; "Name" which is required and must be between 3 and 30 characters, "Botanical Name" which is not required and must also be between 3 and 30 characters then "Description" which is required and must be between 5 and 200 characters. 
     * Two drop down select options allow the user to choose the watering schedule and size of plant.
+    * Tested by adding plants making sure to test all possible selections and options.
+    * Also tested by leaving some required fields blank, this caused a pop up to appear telling the user to fill in the missing field. It was decided when developing that the check boxes would not be required as to not put off users who did not know this information.
 * As a returning user, I want to have access to all plants added by other members, so I can benefit from other people's knowledge.
     * All plants are visible to all users on the Plants page, in descending order so a returning user can view most recently added plants.
+    * As above, this was tested on different browsers and devices, page is fully responsive to changes in size.
 * As a returning user, I want to be able to logout of my profile, so I can keep my data safe.
     * Logout option in the navbar will delete session cookies for that user and take them back to the login page where they will need to re-enter their credentials again to log back in.
+    * Tested by logging in and using the logout button with the dev tools open to ensure session cookies was deleted. Successful every time.
 
 #### Frequent User
 * As a frequent user, I want to edit my added plants, so I can keep the information current.
     * Every plant that the currently logged in user has added will have an edit button, which will take the user to an edit form which will fill in the form with the current data from the database and will allow the user to edit each input then save, or alternatively cancel if they decide to no longer edit.
+    * Tested by changing the inputs multiple times and checking each time after clicking save that the data has been updated on MongoDB, which was successful every time.
+    * Also tested by taking the URL of the edit page and logging out then trying to view the URL, this shows an error message telling the user they are not authorised to edit the plant and a cancel button that returns you to the plants page for security reasons.
 * As a frequent user, I want to search for specific plants, so I can find information about plants I own.
-    * The Plants page includes a search bar which allows the user to search any word and will search within the database from the name, botanical name and description keys. 
+    * The Plants page includes a search bar which allows the user to search any word and will search within the database from the name, botanical name and description keys.
+    * This was tested by searching the database using words that I knew were in the database, these all displayed the correct plants.
+    * It was also tested using words that are not present in the database which brought up the no plants found text.
 * As a frequent user, I want to be able to delete my added plants, so I can ensure no duplicates in the database.
     * Every plant that the currently logged in user has added will have a delete button, which will remove the plant from the database. If clicked there is a pop up that requires the user to confirm deletion to prevent accidental deleting.
+    * To test this 5 test plants were added and 3 were deleted from the plants page and 2 from the profile page. The id in the URL was checked for each and Mongodb was also checked to ensure the data had been deleted. All worked fine.
 * As a frequent user, I want to view all plants with specific filters, so I can choose a new house plant to suit my needs.
     * As mentioned above there is a search bar which searches the name, botanical name and description of all plants in the database.
     * There are also two drop down options which allow the user to choose a room and/or a size. Finally there are two checkboxes; one which will display plants that do not require a lot of light and/or the other which will display plants that do not require frequent watering. 
     * Each input can be searched on its own or they can be combined to create an advanced search of the list of plants from the database.
+    * This was tested by searching the database with every possibility of search:
+        * Individual input search, so tried searching by all 5 rooms on their own, all sizes on their own and each check box checked on its own. Worked fine
+        * Two inputs selected, this was trialled with; room & size, room and light, room and water, size and light, size and water, light and water all worked fine and showed correct findings, or none found.
+        * Three inputs selected, this was trialled on all rooms with a size selected then each checkbox selected, all worked fine or showed the none found text.
+        * All inputs selected; this was trialled with all selected which only showed results for certain rooms, but all were correct.
+        * Finally all of the above were tested with a text input as well, all tests worked fine and showed correct list of plants.
 
 #### Site Owner/Developer
 * As the owner/developer, I want to expand my database of plants, so I can broaden my knowledge.
     * The site is simple to use, users are directed to the register page from the home page as well as if they search for a plant and there are no results.
     * Logging into the site is easy and when registering you have to confirm your password, so users are less likely to forget their credentials.
     * Adding a plant is also easy, the botanical name is not required so even if users don't have that information, they are still able to add a plant.
+    * This was tested by friends and relatives who tested the site for me.
 * As the owner/developer, I want to redirect users to a store, so I can gain sales from people interested in plants.
     * The link to a store is clearly visible to all users on the homepage with a clear green background.
+    * This was tested by clocking the link and ensuring the page opened in a new tab.
 * As the owner/developer, I want to grow my community of plant lovers, so I have an audience of potential customers.
     * The site looks nice and is inviting with nice images and a good layout, which will attract users to explore further as well as make them more likely to return.
+    * This was tested by asking family and friends for feedback, which was all very positive.
 
 
 ### Manual Testing
 #### Functionality
-* All internal links are clearly labelled and work correctly.
+* All internal links are clearly labelled and work correctly when clicked.
 * All external links are clearly labelled, work correctly and open in a new tab.
 * All buttons are clearly labelled and work correctly.
 * All forms submit data in the correct format for the database and provide the correct options for the user to choose from.
@@ -276,12 +305,20 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
     * Samsung S21
 * Also Google Dev tools was used to check the responsiveness of the site by changing the size of the screen and using the zoom feature.
 
+#### Performance
+* From Lighthouse in Chrome Devtools:
+    * Performance - 59 (lower metrcis due to the size of the images on the home page causing load time to increase)
+    * Accessibility - 92
+    * Best Practices - 93
+    * SEO - 100
+
 #### Bugs
 * Search functionality was coded incorrectly to start with using elif to check if the select inputs and checkboxes had been filled in, which meant that as soon as one of the expressions was true then it would ignore the rest of the elifs. This was fixed by changing it to an if statement for each input area.
 * Add Plant button was visible when no plants could be found when using the search bar, even if the user was not logged in. This was fixed by adding in a jinja if statement to only show the add button if the user was logged in and to show the register button if they were not.
 * Modal pulled ID of first plant in the list, so when trying to delete a specific plant it would delete the first plant instead. This was fixed by adding in a jinja reference to the plant ID in the ID attribute of the modal html element, which fixed the bug. 
 * When adding in plants the URL was not pasted in correctly which caused there to be no photo of the plant, therefor an onerror attribute was added to the plant cards so that a default image was shown instead.
 * When testing in safari the description scroll positioning cut the top line of the description off so a margin was added to the paragraph as well as a min-width to the card to fix this.
+* Images on homepage cause a higher load time, however I do not want to affect the quality of the images as they are a bit part of the aesthetics, so this would be something I would look into in the future.
 
 # Deployment
 
@@ -330,10 +367,30 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 ### Media
 * The photos used on the Home page, Profile page and 404 page are all from [Unsplash](https://unsplash.com/).
+    * First image on Home page - [Igor Son from Unsplash](https://unsplash.com/photos/FV_PxCqgtwc)
+    * Second image on Home page - [Ergita Sela from Unsplash](https://unsplash.com/photos/OFrc0b8ruts)
+    * Profile page image - [Annie Spratt from Unsplash](https://unsplash.com/photos/S7viz8JWxwY)
+    * 404 page image - [Annie Spratt from Unsplash](https://unsplash.com/photos/zPktb9QkcGY)
 * The Logo in the header and footer was made by me.
 * The favicon was also designed and created by me.
 * The default plant image was also designed and created by me.
-* The photo URLs used for each plant in the database are from a google search.
+* The photo URLs used for each plant in the database are from a google search, images added by developer are listed below:
+    * Mother in Law's Tongue from [cloudinary.com](https://res.cloudinary.com/patch-gardens/image/upload/c_fill,f_auto,h_840,q_auto:good,w_840/v1563812091/products/snake-plant-e0fb21.jpg)
+    * Swiss Cheese Plant from [cloudfront.net](https://d6p0gevo8s9lm.cloudfront.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/monstera-deliciosa-1.jpg)
+    * ZZ Plant from [shopify.com](https://cdn.shopify.com/s/files/1/0350/5665/products/5N8A2459_web_600x600.jpg?v=1579563579)
+    * Calathea Medallion from [cloudinary.com](https://res.cloudinary.com/patch-gardens/image/upload/c_fill,f_auto,h_840,q_auto:good,w_840/v1539774938/products/calathea-19d9d9.jpg)
+    * Parlour Palm from [smartgardenguide.com](https://smartgardenguide.com/wp-content/uploads/2019/05/how-to-care-for-a-parlor-palm-chamaedorea-elegans-11-681x1024.jpg)
+    * Snake Plant from [plnts.com](https://plnts.com/wp-content/uploads/2020/03/sku_Sansevieria-Fernwood-Mikado_potCR_M_144274-s.jpg)
+    * String of Hearts from [redd.it](https://i.redd.it/7zymycxc7v951.jpg)
+    * Peace Lily from [etsystatic.com](https://i.etsystatic.com/15265690/r/il/9c7e6c/1211862072/il_570xN.1211862072_3kuo.jpg)
+    * Rubber Plant from [cloudinary.com](https://res.cloudinary.com/patch-gardens/image/upload/c_fill,f_auto,h_840,q_auto:good,w_840/v1526658099/products/rubber-plant-f432b4.jpg)
+    * Devil's Ivy from [shopify.com](https://cdn.shopify.com/s/files/1/0758/3437/products/Devils_Ivy_j_1024x.jpg?v=1588073704)
+    * Spider Plant from [shopify.com](https://cdn.shopify.com/s/files/1/0268/0029/1885/products/GD_Spider_H_White_SM_Plant_2.jpg?v=1597093748)
+    * Spotted Begonia from [smartgardenguide.com](https://smartgardenguide.com/wp-content/uploads/2019/10/begonia-maculata-care-12.jpg)
+    * Bird of Paradise from [crocdn.co.uk](https://img.crocdn.co.uk/images/products2/pl/20/00/03/44/pl2000034452.jpg?width=940&height=940)
+    * Corn Plant from [cloudinary.com](https://res.cloudinary.com/patch-gardens/image/upload/c_fill,f_auto,h_840,q_auto:good,w_840/v1539776737/products/corn-plant-214138.jpg)
+    * Mini Swiss Cheese Plant from [plnts.com](https://plnts.com/wp-content/uploads/2020/03/PL_M_014_Monstera-Adansonii_potCR_M_1027719.jpg)
+    * Red Chinese Evergreen from [cloudinary.com](https://res.cloudinary.com/patch-gardens/image/upload/c_fill,f_auto,h_840,q_auto:good,w_840/v1581949716/cyxonbr7h6zt8umiukts.jpg)
 
 ### Acknowledgements
 * Mentor sessions helped me figure out how to fix my search functionality to combine checked boxes with text. 
