@@ -13,7 +13,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 ## User Stories
 ### New User
 * As a new user, I want to understand the main purpose of the site, so I can learn more about the site’s features.
-* As a new user, I want to see tha plants featured on the website, so I can learn more about plants.
+* As a new user, I want to see the plants featured on the website, so I can learn more about plants.
 * As a new user, I want to be shown where I can buy plants, so I can purchase a house plant.
 
 ### Returning User
@@ -30,7 +30,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 ### Site Owner/Developer
 * As the owner/developer, I want to expand my database of plants, so I can broaden my knowledge.
-* As the owner/developer, I want to redirect users to a store, so I can gain sales from people intereted in plants.
+* As the owner/developer, I want to redirect users to a store, so I can gain sales from people interested in plants.
 * As the owner/developer, I want to grow my community of plant lovers, so I have an audience of potential customers.
 
 ## Design
@@ -49,7 +49,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 ### **Imagery**
 * The home page features two artistic images of houseplants, which capture the eye and go well with the green colour theme.
-* The profile and 404 pages also feature artistic imagery of houseplants which are inkeeping with the theme.
+* The profile and 404 pages also feature artistic imagery of houseplants which are in keeping with the theme.
 * Font Awesome icons are used in areas to clearly label input fields and headers.
 * Each plant has an image at the top of the card which shows the user exactly what the plant looks like.
 
@@ -85,7 +85,8 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 * Same form layout as Login page with extra input to confirm password, this was to prevent an error when entering their password first time round.
     * Figma screenshot - [Register](https://raw.githubusercontent.com/fayskerritt/padplants/master/static/img/readme/registerwireframe.png)
 
-### Creation of database on MongoDB:
+### Database Structure
+#### Creation of database on MongoDB:
 * Once registered and logged in to [MongoDB](https://www.mongodb.com/) a database was created named 'pad-plants' and a document was added to the Plant collection with the following 'key: value' pairs:
 
     `_id:` (str)\
@@ -114,7 +115,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 * Registration - Creating a profile using a unique username and password which is stored in the database, the password will be hashed for better security.
 * Displaying database of plants on the Plants page - Pulling the data from MongoDB to display the list of all plants in the database with all fields displayed nicely in their own individual cards.
 * Adding a plant - Creating a plant and adding it to the database using the Add Plant form. This allows the user to input the name, botanical name and a description. There are two drop downs for the user to choose the size and how often the plant needs watering. There are also two lots of radio checkboxes that the user can choose how much light the plant needs and which room the plant goes best in. Finally there is an input for the user to add a URL for an image, however if the URL doesn't work then the image displayed will be a default image.
-* Editing a plant you have addded - An edit button will be available to edit the fields of a plant you have added, the previously chosen fields will be autofilled on the Edit page. The Admin user profile has access to edit all plants.
+* Editing a plant you have added - An edit button will be available to edit the fields of a plant you have added, the previously chosen fields will be auto filled on the Edit page. The Admin user profile has access to edit all plants.
 * Deleting a plant you have added - A delete button will be available to delete a plant that you have added. The Admin user profile has access to delete all plants.
 * Viewing all plants you have added on your Profile page - Pulling data from MongoDB to display the plants that have been added by the user that is logged in, this uses the 'created by' field.
 * Searching the database - 
@@ -132,6 +133,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
     * If no plants have been added yet by the current user, a message and Add button will show on the profile page.
 * Responsiveness - As can be seen in the mockup at the top of this README the site is responsive across all sizes of device. The Bootstrap Grid framework was used to enable this.
 * Defensive Programming - A modal is used to ask the user if they are sure they want to delete a plant when the Delete button is clicked.
+* To ensure user is always able to read the whole description overflow was set to scroll in css in case of zoomed in font sizes on different devices.
 * Interactive Navbar that displays a bottom border when hovering as well as bolder font on the page that is active.
 * An external link is present on the home page with the option to buy plants, this sends users to an Amazon page currently.
 * Social Media links in the footer - Links to social media pages increase engagement with users.
@@ -152,10 +154,10 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - To create a flask app in Python that is backed by MongoDB and allows for routing to be coded for the different pages and functions of the web app.
 * [Jinja](https://palletsprojects.com/p/jinja/) - Templating used in HTML files as a link for the Python expressions and functions.
 * [Werkzeug](https://pypi.org/project/Werkzeug/) - To debug code when an error is highlighted, also for password hashing as a security helper.
-* [Pymongo](https://pypi.org/project/pymongo/) - To simplify the communihcations between the flask app and the Mongo database.
+* [Pymongo](https://pypi.org/project/pymongo/) - To simplify the communications between the flask app and the Mongo database.
 * [Python.OS](https://docs.python.org/3/library/os.html) - To set the default environment variables for the web app.
 * [BSON.ObjectId](https://docs.mongodb.com/manual/reference/method/ObjectId/) - To find documents in MongoDB by rendering the ObjectId.
-* [GitHub](https://github.com/) - To store the the project once pushed from Gitpod.
+* [GitHub](https://github.com/) - To store the project once pushed from Gitpod.
 * [Git](https://git-scm.com/) - For Version control by using the Gitpod terminal to add, commit and push the code to GitHub.
 * [Bootstrap](https://getbootstrap.com/) - Template used to ensure site is responsive as well as for styling objects as a base for own CSS.
 * [Figma](https://www.figma.com/file/HC618UdxHcbhAvexrrO5Hp/Milestone-2-Wireframes) - To create wireframes, logo, favicon and the colour chart for README.
@@ -181,7 +183,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 #### Returning User
 * As a returning user, I want to register to the site, so I have my own profile to store my information.
-    * On the home page the "Register" button takes the user to the registration page, where the form requires the user to enter a username and password, then to re-enter the password to ensure the user has correctly entered their desired password. The form has 3 required inputs which will flag with an exclamation mark if the entry is not valid. The username is required to be between 5 and 15 characters and the following charactders are allowed; A-Z a-z 0-9 ! @ # $ % ^ & * _ = + - this is the same for the password fields.
+    * On the home page the "Register" button takes the user to the registration page, where the form requires the user to enter a username and password, then to re-enter the password to ensure the user has correctly entered their desired password. The form has 3 required inputs which will flag with an exclamation mark if the entry is not valid. The username is required to be between 5 and 15 characters and the following characters are allowed; A-Z a-z 0-9 ! @ # $ % ^ & * _ = + - this is the same for the password fields.
 * As a returning user, I want to add plants to the database, so I can share my plant knowledge with the community.
     * Create functionality provides the user with a form to add in details about the plant. 
     * There are three text input fields; "Name" which is required and must be between 3 and 30 characters, "Botanical Name" which is not required and must also be between 3 and 30 characters then "Description" which is required and must be between 5 and 200 characters. 
@@ -193,7 +195,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 #### Frequent User
 * As a frequent user, I want to edit my added plants, so I can keep the information current.
-    * Every plant that the currently logged in user has added will have an edit button, which will take the user to an edit form which will fill in the form with the current data from the database and will allow the user to edit each input then save, or alternatively cancel if they decideto no longer edit.
+    * Every plant that the currently logged in user has added will have an edit button, which will take the user to an edit form which will fill in the form with the current data from the database and will allow the user to edit each input then save, or alternatively cancel if they decide to no longer edit.
 * As a frequent user, I want to search for specific plants, so I can find information about plants I own.
     * The Plants page includes a search bar which allows the user to search any word and will search within the database from the name, botanical name and description keys. 
 * As a frequent user, I want to be able to delete my added plants, so I can ensure no duplicates in the database.
@@ -206,9 +208,9 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 #### Site Owner/Developer
 * As the owner/developer, I want to expand my database of plants, so I can broaden my knowledge.
     * The site is simple to use, users are directed to the register page from the home page as well as if they search for a plant and there are no results.
-    * Logging into the site is easy and when registering you have to confirm your password so users are less likely to forget their credentials.
-    * Adding a plant is also easy, the botanical name is not required so even if users don't have that information they are still able to add a plant.
-* As the owner/developer, I want to redirect users to a store, so I can gain sales from people intereted in plants.
+    * Logging into the site is easy and when registering you have to confirm your password, so users are less likely to forget their credentials.
+    * Adding a plant is also easy, the botanical name is not required so even if users don't have that information, they are still able to add a plant.
+* As the owner/developer, I want to redirect users to a store, so I can gain sales from people interested in plants.
     * The link to a store is clearly visible to all users on the homepage with a clear green background.
 * As the owner/developer, I want to grow my community of plant lovers, so I have an audience of potential customers.
     * The site looks nice and is inviting with nice images and a good layout, which will attract users to explore further as well as make them more likely to return.
@@ -239,7 +241,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 #### Security
 * Incorrect login details returns a generic error message and reloads the page.
 * Users can only update and delete plants that they have added, jinja templating is used to hide information from any users that are not authorised.
-* Password confirmation when registering ensures users remember their login credenitals.
+* Password confirmation when registering ensures users remember their login credentials.
 * Password is hashed so the password that the user inputs when registering is never saved in the database.
 
 #### Accessibility
@@ -249,7 +251,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 * Contrast of colours used across the site were checked in Google Dev Tools to ensure the contrast was AA meaning a score between 3.0 and 4.5.
 
 #### Usability
-* Styling and Javascript are used to make the navbar interactive when hovered over to engage the user.
+* Styling and JavaScript are used to make the navbar interactive when hovered over to engage the user.
 * The active page is bold in the navbar to tell the user which page they are on.
 * All links in the navbar work correctly and take you to the correct page.
 * The collapsible navbar works correctly on smaller screens with the hamburger button working to show the navbar links.
@@ -264,21 +266,22 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 #### Responsiveness
 * The web app was viewed on the following devices and worked correctly on all;
-    * Macbook
-    * Macbook Pro
+    * MacBook
+    * MacBook Pro
     * Dell Laptop
     * Desktop monitor
     * iPad Mini
     * iPhone 12 Pro Max
     * iPhone 11
     * Samsung S21
-* Also Google Dev tools was used to check the responsiveness of the site when changing the size of the screen.
+* Also Google Dev tools was used to check the responsiveness of the site by changing the size of the screen and using the zoom feature.
 
 #### Bugs
 * Search functionality was coded incorrectly to start with using elif to check if the select inputs and checkboxes had been filled in, which meant that as soon as one of the expressions was true then it would ignore the rest of the elifs. This was fixed by changing it to an if statement for each input area.
 * Add Plant button was visible when no plants could be found when using the search bar, even if the user was not logged in. This was fixed by adding in a jinja if statement to only show the add button if the user was logged in and to show the register button if they were not.
 * Modal pulled ID of first plant in the list, so when trying to delete a specific plant it would delete the first plant instead. This was fixed by adding in a jinja reference to the plant ID in the ID attribute of the modal html element, which fixed the bug. 
-* When adding in plants the URl was not pasted in correctly which caused there to be no photo of the plant, therefor an onerror attribute was added to the plant cards so that a default image was shown instead.
+* When adding in plants the URL was not pasted in correctly which caused there to be no photo of the plant, therefor an onerror attribute was added to the plant cards so that a default image was shown instead.
+* When testing in safari the description scroll positioning cut the top line of the description off so a margin was added to the paragraph as well as a min-width to the card to fix this.
 
 # Deployment
 
@@ -300,7 +303,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 * A new app was created with the name 'pad-plants'.
 * In the 'Deploy Tab' GitHub was connected using the repository name.
-* In the 'Settings' tab of Heroku, the Configuration Variabless were added (these are the 'key:value' pairs that were declared in the `env.py` file).
+* In the 'Settings' tab of Heroku, the Configuration Variables were added (these are the 'key: value' pairs that were declared in the `env.py` file).
 * Back in the 'Deploy' tab the 'Enable Automatic Deployment' button was clicked to allow automatic updates from GitHub.
 * The branch was then deployed from the master.
 
@@ -322,12 +325,16 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 # Credits
 ### Content
 * Code Institute - Backend Development Mini Project - Inspiration for code layout and functionality learnt here.
+* Details about plants added was sourced from the web and written in the user's own words.
+* The developer is not responsible for any copyright of the images added by users.
 
 ### Media
-* The photos used on home.html, profile.html and 404.html are all from [Unsplash](https://unsplash.com/).
-* The Logo in the header and footer was made by myself.
-* The favicon was also designed and created by myself.
+* The photos used on the Home page, Profile page and 404 page are all from [Unsplash](https://unsplash.com/).
+* The Logo in the header and footer was made by me.
+* The favicon was also designed and created by me.
+* The default plant image was also designed and created by me.
 * The photo URLs used for each plant in the database are from a google search.
 
 ### Acknowledgements
 * Mentor sessions helped me figure out how to fix my search functionality to combine checked boxes with text. 
+* Tutor support for help with issues when attempting to add in jinja templating to html and getting red errors in gitpod.

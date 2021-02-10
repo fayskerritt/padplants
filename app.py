@@ -227,6 +227,7 @@ def edit(plant_id):
     """
         Using the ID of the plant, pulls the current key value pairs from
         the database then updates these with any changes the user has made.
+
         Return: An edit form with the current data of the plant from the
         database with the option to change and submit changes.
     """
@@ -255,6 +256,7 @@ def delete(plant_id):
 
     """
         Deletes the plant document in the database, finding it by its ID.
+
         Return: Deletes data and returns user to the plants page.
     """
 
@@ -279,4 +281,4 @@ def page_not_found(err):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

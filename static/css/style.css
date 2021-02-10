@@ -151,7 +151,7 @@ footer a {
     color: #fff;
 }
 
-/* all plants */
+/* plants */
 
 .icon {
     padding: 5px;
@@ -180,6 +180,7 @@ footer a {
 .card {
     margin-bottom: 20px;
     max-width: 360px;
+    min-width: 280px;
 }
 
 .card-feature {
@@ -195,11 +196,15 @@ footer a {
 }
 
 .description {
-    height: 130px;
+    height: 140px;
     overflow: scroll;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.description p {
+    margin-top: 10px;
 }
 
 .plant-search {
