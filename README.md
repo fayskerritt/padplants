@@ -165,7 +165,7 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 
 # Testing
 ### Code Validation
-* HTML Validator
+* HTML Validator - All pages passed except from empty option tag on add_plant form which is required for 
 * CSS Validator
 * JSHint
 * PEP8
@@ -236,13 +236,42 @@ Live demo can be viewed [here, deployed to Heroku](https://pad-plants.herokuapp.
 * The site link hosted through Heroku displays everything correctly.
 
 #### Security
-* 
+* Incorrect login details returns a generic error message and reloads the page.
+* Users can only update and delete plants that they have added, jinja templating is used to hide information from any users that are not authorised.
+* Password confirmation when registering ensures users remember their login credenitals.
+* Password is hashed so the password that the user inputs when registering is never saved in the database.
 
 #### Accessibility
-#### Compatibility
-#### Usability
-#### Responsiveness
+* All images have an alt attribute which explains the image for screen readers.
+* Aria labels are also used when the alt attribute is not available.
+* Semantic markup is used for clear html structure.
+* Contrast of colours used across the site were checked in Google Dev Tools to ensure the contrast was AA meaning a score between 3.0 and 4.5.
 
+#### Usability
+* Styling and Javascript are used to make the navbar interactive when hovered over to engage the user.
+* The active page is bold in the navbar to tell the user which page they are on.
+* All links in the navbar work correctly and take you to the correct page.
+* The collapsible navbar works correctly on smaller screens with the hamburger button working to show the navbar links.
+* If an error occurs with the URL the 404 page explains what has happened and displays a link back to the plants page.
+* Flash messages are displayed in a banner near the top of the page which is the same on every page giving the user feedback or confirming an action.
+
+#### Compatibility
+* The web app was viewed on the following browsers and worked correctly on all; 
+    * Google Chrome
+    * Safari
+    * Internet Explorer
+
+#### Responsiveness
+* The web app was viewed on the following devices and worked correctly on all;
+    * Macbook
+    * Macbook Pro
+    * Dell Laptop
+    * Desktop monitor
+    * iPad Mini
+    * iPhone 12 Pro Max
+    * iPhone 11
+    * Samsung S21
+* Also Google Dev tools was used to check the responsiveness of the site when changing the size of the screen.
 
 #### Bugs
 * Search functionality was coded incorrectly to start with using elif to check if the select inputs and checkboxes had been filled in, which meant that as soon as one of the expressions was true then it would ignore the rest of the elifs. This was fixed by changing it to an if statement for each input area.
